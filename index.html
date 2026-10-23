@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AfroPublisher</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#2d2b6b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style id="pg"></style>
+<style>
+:root{--bg:#1a1b2e;--pn:#12131f;--bd:#2c2e4d;--tx:#ecebf8;--mu:#9d9eba;--pk:#d93a73;--pk2:#ff8fb8;--hd:#2d2b6b;--hd2:#201f55}
+:root.lt{--bg:#f5f4fb;--pn:#fff;--bd:#d9d8ea;--tx:#1d1c36;--mu:#6a6a86;--pk2:#d93a73}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,system-ui,"Segoe UI",sans-serif;display:flex;flex-direction:column;height:100dvh}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--pk2);outline-offset:2px}
+header{background:linear-gradient(var(--hd),var(--hd2));padding:max(10px,env(safe-area-inset-top)) 12px 10px;display:flex;align-items:center;gap:6px;color:#fff}
+.lg{width:46px;height:46px;border-radius:13px;background:#fcfcff;display:grid;place-items:center;flex:none}
+.lg img{width:34px;height:36px;object-fit:contain}
+.nm{flex:1;min-width:0;margin-left:2px}
+.nm b{font-size:20px;display:block;line-height:1.15;white-space:nowrap}
+.nm b i{font-style:normal;color:var(--pk2)}
+.nm small{font-size:10.5px;opacity:.8;white-space:nowrap;display:block}
+.ib,.nb{height:36px;border:1.5px solid #5d5b9c;background:#ffffff14;border-radius:10px;color:#fff}
+.ib{width:36px;display:grid;place-items:center;padding:0}
+.nb{padding:0 11px}
+svg.i{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bar{display:flex;gap:4px;padding:6px 12px;border-bottom:1px solid var(--bd);background:var(--pn)}
+.bar button{background:none;border:1px solid transparent;border-radius:999px;padding:7px 16px;color:var(--mu)}
+.bar button.on{color:var(--tx);border-color:var(--pk);background:var(--bg)}
+.bar #tl{margin-left:auto;border-color:var(--bd)}
+#lp:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 16px;background:var(--pn);border-bottom:1px solid var(--bd)}
+#lp label{font-size:13px;color:var(--mu);display:grid;gap:4px}
+#lp select{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:9px}
+main{flex:1;overflow:auto;padding:16px 20px 28px}
+#ti{width:100%;background:none;border:0;border-bottom:3px solid var(--pk);font:700 30px Georgia,serif;padding:4px 0 8px;outline:0;color:var(--tx)}
+#au{width:100%;background:none;border:0;border-bottom:1px solid var(--bd);font:italic 17px Georgia,serif;padding:10px 0;outline:0;color:var(--mu)}
+#tx{display:block;width:100%;min-height:50vh;background:none;border:0;resize:none;outline:0;font:19px/1.7 Georgia,"Iowan Old Style",serif;padding:16px 0;overflow:hidden}
+#ti::placeholder,#au::placeholder,#tx::placeholder{color:var(--mu);opacity:.7}
+.st{display:flex;justify-content:center;align-items:center;gap:12px;padding:10px 12px max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--bd);background:var(--pn);color:var(--mu);font-size:14px}
+.pill{border:1px solid var(--bd);border-radius:999px;padding:5px 14px}
+.dot{width:9px;height:9px;border-radius:50%;background:#1f9d5c;margin-right:-6px}
+.md{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:5}
+.md.on{display:flex}
+.card{background:var(--pn);border:1px solid var(--bd);border-radius:24px;padding:20px;width:100%;max-width:520px;max-height:92dvh;overflow:auto}
+.card h2{margin:0;font-size:25px}
+.hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.x{background:none;border:0;font-size:30px;line-height:1;color:var(--tx);padding:0 6px}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ch{background:var(--bg);border:1px solid var(--bd);border-top:4px solid var(--pk);border-radius:20px;padding:14px;text-align:left;display:block;width:100%}
+.ch b{font-size:18px;display:block;margin-bottom:6px}
+.ch span{color:var(--mu);font-size:14px;display:block}
+.wide{grid-column:1/-1}
+.row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.row button.o{flex:1;text-align:left;background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:12px}
+.row button.o small{display:block;color:var(--mu)}
+.row .d{background:none;border:0;color:var(--mu);font-size:22px;padding:6px 10px}
+.ver{color:var(--mu);font-size:13px;margin:14px 0 0;text-align:center}
+.em{color:var(--mu);text-align:center;padding:40px 0}
+#pv{display:none}
+#pv .tp{border-bottom:2px dashed #cfcfe0;padding:12% 0}
+#pv .pb .sec+.sec{border-top:2px dashed #cfcfe0;margin-top:1.5em;padding-top:1.5em}
+.paper{--ff:Georgia,"Iowan Old Style",serif;--hf:var(--ff);--ac:#d93a73;background:#fff;color:#1b1b1b;font:var(--fs,11pt)/1.6 var(--ff);padding:28px 24px;border-radius:8px;max-width:720px;margin:0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.paper[data-t=report],.paper[data-t=songbook]{--ff:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.paper[data-t=magazine],.paper[data-t=news]{--hf:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.paper h1{font:700 1.9em/1.15 var(--hf);margin:0 0 .6em}
+.paper h2{font:700 1.25em/1.2 var(--hf);margin:1.2em 0 .4em}
+.paper p{margin:0 0 .8em;text-align:justify;hyphens:auto}
+.paper .v{margin:0 0 1.1em}
+.paper .lb{font:700 .8em var(--hf);color:var(--ac);margin:.6em 0 .2em}
+.tp{text-align:center;padding:30% 0;break-after:page}
+.tp h1{font-size:2.6em}
+.tp p{text-align:center;color:#555}
+.mh{border-bottom:5px solid var(--ac);margin-bottom:1.2em;padding-bottom:.5em}
+.mh h1{font-size:2.6em;margin:0}
+.mh p{margin:.3em 0 0;color:#555;text-align:left}
+.paper[data-t=book] .sec h1,.paper[data-t=poetry] .sec h1{text-align:center;margin:1.2em 0 1em}
+.paper[data-t=magazine] .bd,.paper[data-t=news] .bd{column-count:2;column-gap:8mm}
+.paper[data-t=magazine] .sec>p:first-of-type::first-letter{float:left;font:700 3.4em/.85 var(--hf);color:var(--ac);padding:.05em .1em 0 0}
+.paper .sec h1,.paper .sec h2{break-after:avoid}
+.paper table{width:100%;border-collapse:collapse;margin:.5em 0 1em}
+.paper th,.paper td{border-bottom:1px solid #ccc;padding:.35em .4em;text-align:left;font-size:.95em}
+.paper th{background:#2d2b6b;color:#fff}
+.paper .kv{text-align:left;margin:0 0 .3em}
+.paper .kv b{display:inline-block;min-width:7em}
+#sp{position:fixed;inset:0;background:#2d2b6b;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;transition:opacity .5s}
+#sp .lg{width:120px;height:120px;border-radius:30px}
+#sp .lg img{width:86px;height:90px}
+#sp b{font-size:38px}#sp b i{font-style:normal;color:var(--pk2)}
+#sp span{opacity:.85}
+#to{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--hd);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:8;display:none;max-width:90%;text-align:center}
+#print{display:none}
+@media print{
+body>:not(#print){display:none!important}
+html,body{height:auto;background:#fff}
+body{display:block}
+#print{display:block}
+.paper{padding:0;border-radius:0;max-width:none;margin:0}
+.paper.pb .sec+.sec{break-before:page}
+}
+@media(prefers-reduced-motion:reduce){#sp{transition:none}}
+</style>
+</head>
+<body>
+<div id="sp"><div class="lg"><img src="logo.png" alt=""></div><b>Afro<i>Publisher</i></b><span>Developed by Last Dulani</span></div>
+<header>
+<div class="lg"><img src="logo.png" alt="AfroPublisher logo"></div>
+<div class="nm"><b>Afro<i>Publisher</i></b><small>Developed by Last Dulani</small></div>
+<button class="ib" id="bt" aria-label="Light or dark"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></button>
+<button class="ib" id="be" aria-label="Export"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></button>
+<button class="ib" id="bd" aria-label="My documents"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
+<button class="nb" id="bn">New</button>
+</header>
+<nav class="bar"><button id="tw" class="on">Write</button><button id="tv">Preview</button><button id="tl">Layout</button></nav>
+<div id="lp" hidden>
+<label>Trim size<select id="z"><option value="A5">A5 (148 × 210 mm)</option><option value="A4">A4 (210 × 297 mm)</option><option value="6x9">6 × 9 in</option><option value="Letter">US Letter</option></select></label>
+<label>Text size<select id="fs"><option>10</option><option>11</option><option>12</option><option>14</option></select></label>
+</div>
+<main>
+<div id="wr"><input id="ti" placeholder="Title" aria-label="Title"><input id="au" placeholder="Author (optional)" aria-label="Author"><textarea id="tx" aria-label="Your text"></textarea></div>
+<div id="pv"></div>
+</main>
+<div class="st"><span class="pill" id="tn"></span><span class="dot"></span><span id="sv">Saved</span><span id="wc">0 words</span></div>
+
+<div class="md" id="mp"><div class="card"><div class="hd"><h2>What are you publishing?</h2><button class="x" data-c aria-label="Close">×</button></div><div class="gr" id="pk"></div></div></div>
+<div class="md" id="mx"><div class="card"><div class="hd"><h2>Export</h2><button class="x" data-c aria-label="Close">×</button></div>
+<div class="gr">
+<button class="ch wide" id="xp"><b>PDF</b><span>Opens the print dialog. Choose Save as PDF.</span></button>
+<button class="ch wide" id="xe"><b>EPUB</b><span>An e-book file for any EPUB reader, with a contents list.</span></button>
+<button class="ch wide" id="xb"><b>Print-ready PDF</b><span>Trim size plus 3 mm bleed on every edge, for the printer.</span></button>
+</div></div></div>
+<div class="md" id="md"><div class="card"><div class="hd"><h2>My documents</h2><button class="x" data-c aria-label="Close">×</button></div><div id="dl"></div><p class="ver" id="vr"></p></div></div>
+<div id="to"></div>
+<div id="print"></div>
+
+<script>
+const $=s=>document.querySelector(s),
+E=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
+inl=s=>E(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>'),
+VER='1.0, October 2026';
+const T={
+book:{n:'Book',d:'Chapters on a classic book page, with a title page.',s:'A5',pb:1,ph:'# Chapter One\n\nStart writing here. A blank line starts a new paragraph.'},
+poetry:{n:'Poetry collection',d:'Every line break kept, one poem per page.',s:'A5',pb:1,v:1,ph:'# Poem title\n\nEvery line break stays as you type it.\nA blank line starts a new stanza.'},
+report:{n:'School report',d:'Learner details, a marks table and comments.',s:'A4',ph:'# Term 3 Report\n\nName: Tariro Moyo\nGrade: 7\n\nSubject | Mark | Comment\nMathematics | 78% | Strong progress\n\nTeacher comment goes here.'},
+magazine:{n:'Magazine',d:'Bold masthead, two columns and a drop cap.',s:'A4',ph:'# Cover story\n\nThe first letter becomes a drop cap and the text flows into two columns.'},
+songbook:{n:'Songbook',d:'Songs with Verse, Chorus and Bridge labels.',s:'A5',pb:1,v:1,ph:'# Song title\n\n[Verse 1]\nFirst line\nSecond line\n\n[Chorus]\nSing it here'},
+news:{n:'Community newsletter',d:'Masthead, headlines and short articles in columns.',s:'A4',ph:'# Headline\n\nShort articles flow in two columns. Use ## for a subheading.'}
+};
+const SZ={A5:[148,210],A4:[210,297],'6x9':[152.4,228.6],Letter:[215.9,279.4]};
+let DB={},D=null,tm;
+try{DB=JSON.parse(localStorage.getItem('ap.db')||'{}')}catch(e){}
+if(localStorage.getItem('ap.lt')==='1')document.documentElement.classList.add('lt');
+
+function parse(d){
+ const t=T[d.t],src=d.text.replace(/\r/g,'').replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];let c=null;
+ for(const b of src.split(/\n{2,}/)){
+  const bl=b.split('\n').map(x=>x.trim()).filter(Boolean);if(!bl.length)continue;
+  const m=/^# (.*)/.exec(bl[0]);
+  if(m){c={t:m[1],h:''};S.push(c);continue}
+  if(!c){c={t:'',h:''};S.push(c)}
+  let h;
+  if(/^## /.test(bl[0]))h='<h2>'+inl(bl[0].slice(3))+'</h2>';
+  else if(d.t==='report'&&bl.length>1&&bl.every(x=>x.includes('|')))h='<table>'+bl.map((r,i)=>'<tr>'+r.split('|').map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x.trim())+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>';
+  else if(d.t==='report'&&bl.every(x=>/^[^|:]{1,30}:\s*\S/.test(x)))h=bl.map(x=>{const i=x.indexOf(':');return '<p class="kv"><b>'+inl(x.slice(0,i))+'</b>'+inl(x.slice(i+1).trim())+'</p>'}).join('');
+  else if(t.v)h='<div class="v">'+bl.map(x=>{const l=/^\[(.+)\]$/.exec(x);return l?'<div class="lb">'+inl(l[1])+'</div>':inl(x)+'<br/>'}).join('')+'</div>';
+  else h='<p>'+inl(bl.join(' '))+'</p>';
+  c.h+=h}
+ return S}
+const sec=s=>'<section class="sec">'+(s.t?'<h1>'+inl(s.t)+'</h1>':'')+s.h+'</section>';
+function paper(d){
+ const t=T[d.t],S=parse(d),au=E(d.author||''),ti=E(d.title||'Untitled'),mast=['news','magazine','report'].includes(d.t),
+ dt=new Date().toLocaleDateString(undefined,{month:'long',year:'numeric'}),
+ top=mast?'<header class="mh"><h1>'+ti+'</h1><p>'+[d.t==='report'?'Learner report':dt,au].filter(Boolean).join(', ')+'</p></header>':'<div class="tp"><h1>'+ti+'</h1><p>'+au+'</p></div>';
+ return '<article class="paper'+(t.pb?' pb':'')+'" data-t="'+d.t+'" style="--fs:'+d.fs+'pt">'+top+'<div class="bd">'+S.map(sec).join('')+'</div></article>'}
+
+//Z
+function crc(b){let t=crc.t;if(!t){t=crc.t=[];for(let i=0,c;i<256;i++){c=i;for(let n=0;n<8;n++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}}let x=-1;for(const v of b)x=t[(x^v)&255]^(x>>>8);return(x^-1)>>>0}
+function zip(files){
+ const E8=new TextEncoder(),P=[],C=[];let off=0;
+ for(const f of files){
+  const n=E8.encode(f.n),c=crc(f.d),l=new DataView(new ArrayBuffer(30));
+  l.setUint32(0,0x04034b50,true);l.setUint16(4,20,true);l.setUint16(6,0x0800,true);l.setUint16(12,0x21,true);l.setUint32(14,c,true);l.setUint32(18,f.d.length,true);l.setUint32(22,f.d.length,true);l.setUint16(26,n.length,true);
+  P.push(l.buffer,n,f.d);
+  const h=new DataView(new ArrayBuffer(46));
+  h.setUint32(0,0x02014b50,true);h.setUint16(4,20,true);h.setUint16(6,20,true);h.setUint16(8,0x0800,true);h.setUint16(14,0x21,true);h.setUint32(16,c,true);h.setUint32(20,f.d.length,true);h.setUint32(24,f.d.length,true);h.setUint16(28,n.length,true);h.setUint32(42,off,true);
+  C.push(h.buffer,n);off+=30+n.length+f.d.length}
+ const cs=C.reduce((a,b)=>a+b.byteLength,0),e=new DataView(new ArrayBuffer(22));
+ e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
+ return new Blob([...P,...C,e.buffer],{type:'application/epub+zip'})}
+//ZZ
+
+function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
+function toast(m){const e=$('#to');e.textContent=m;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',3500)}
+const slug=()=>(D.title||'Untitled').replace(/[^\w-]+/g,'-').replace(/^-|-$/g,'')||'Untitled';
+
+function epub(){
+ const S=parse(D);if(!S.length)return toast('Write something first, then export.');
+ const ti=D.title||'Untitled',U=s=>new TextEncoder().encode(s),
+ X=s=>'<?xml version="1.0" encoding="UTF-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.w3.org/2007/ops" lang="en"><head><meta charset="utf-8"/><title>'+E(ti)+'</title><link rel="stylesheet" href="style.css"/></head><body class="'+D.t+'">'+s+'</body></html>',
+ P=[{id:'t',n:ti,h:'<div class="tp"><h1>'+E(ti)+'</h1><p>'+E(D.author||'')+'</p></div>'}].concat(S.map((s,i)=>({id:'s'+i,n:s.t||'Section '+(i+1),h:sec(s)}))),
+ css='body{font-family:Georgia,serif;line-height:1.6;margin:5%}body.report,body.songbook{font-family:sans-serif}h1,h2{line-height:1.2}p{margin:0 0 .8em;text-align:justify}.v{margin:0 0 1.2em}.lb{font-weight:bold;color:#d93a73;font-size:.85em}.tp{text-align:center;margin-top:30%}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #ccc;padding:.3em;text-align:left}th{background:#2d2b6b;color:#fff}.kv b{display:inline-block;min-width:7em}',
+ opf='<?xml version="1.0" encoding="UTF-8"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:'+D.id+'</dc:identifier><dc:title>'+E(ti)+'</dc:title>'+(D.author?'<dc:creator>'+E(D.author)+'</dc:creator>':'')+'<dc:language>en</dc:language><meta property="dcterms:modified">'+new Date().toISOString().slice(0,19)+'Z</meta></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="style.css" media-type="text/css"/>'+P.map(p=>'<item id="'+p.id+'" href="'+p.id+'.xhtml" media-type="application/xhtml+xml"/>').join('')+'</manifest><spine>'+P.map(p=>'<itemref idref="'+p.id+'"/>').join('')+'</spine></package>',
+ f=[{n:'mimetype',d:U('application/epub+zip')},
+ {n:'META-INF/container.xml',d:U('<?xml version="1.0"?><container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>')},
+ {n:'OEBPS/content.opf',d:U(opf)},{n:'OEBPS/style.css',d:U(css)},
+ {n:'OEBPS/nav.xhtml',d:U(X('<nav epub:type="toc"><h1>Contents</h1><ol>'+P.map(p=>'<li><a href="'+p.id+'.xhtml">'+E(p.n)+'</a></li>').join('')+'</ol></nav>'))}]
+ .concat(P.map(p=>({n:'OEBPS/'+p.id+'.xhtml',d:U(X(p.h))})));
+ dl(zip(f),slug()+'.epub');closeAll();toast('EPUB saved to your downloads.')}
+
+function printDoc(bleed){
+ if(!D.text.trim())return toast('Write something first, then export.');
+ const [w,h]=SZ[D.z],b=bleed?3:0;
+ $('#pg').textContent='@page{size:'+(w+2*b)+'mm '+(h+2*b)+'mm;margin:'+(18+b)+'mm}';
+ $('#print').innerHTML=paper(D);closeAll();
+ toast('In the print dialog, choose Save as PDF.');
+ setTimeout(()=>print(),400)}
+window.onafterprint=()=>{$('#print').innerHTML=''};
+
+const persist=()=>{try{localStorage.setItem('ap.db',JSON.stringify(DB));localStorage.setItem('ap.last',D.id);$('#sv').textContent='Saved'}catch(e){$('#sv').textContent='Not saved'}};
+function touch(){D.u=Date.now();DB[D.id]=D;$('#sv').textContent='Saving…';clearTimeout(tm);tm=setTimeout(persist,300);count()}
+function count(){const n=(D.text.match(/\S+/g)||[]).length;$('#wc').textContent=n+(n===1?' word':' words')}
+function grow(){const t=$('#tx');t.style.height='auto';t.style.height=Math.max(t.scrollHeight,window.innerHeight*.5)+'px'}
+function show(){
+ $('#ti').value=D.title;$('#au').value=D.author;$('#tx').value=D.text;$('#tx').placeholder=T[D.t].ph;
+ $('#z').value=D.z;$('#fs').value=D.fs;$('#tn').textContent=T[D.t].n;count();view('w');grow()}
+function view(v){
+ $('#wr').style.display=v==='w'?'block':'none';$('#pv').style.display=v==='p'?'block':'none';
+ $('#tw').classList.toggle('on',v==='w');$('#tv').classList.toggle('on',v==='p');
+ if(v==='p')$('#pv').innerHTML=D.text.trim()?paper(D):'<p class="em">Nothing to preview yet. Write something first.</p>'}
+function neu(t){D={id:'d'+Date.now().toString(36),t,title:'',author:'',text:'',z:T[t].s,fs:11,u:Date.now()};closeAll();show()}
+function open_(id){D=DB[id];closeAll();show()}
+function closeAll(){document.querySelectorAll('.md').forEach(m=>m.classList.remove('on'))}
+const ago=u=>{const m=(Date.now()-u)/6e4;return m<1?'just now':m<60?Math.floor(m)+' min ago':m<1440?Math.floor(m/60)+' h ago':Math.floor(m/1440)+(m<2880?' day ago':' days ago')};
+function picker(){
+ const l=DB[localStorage.getItem('ap.last')];
+ $('#pk').innerHTML=Object.keys(T).map(k=>'<button class="ch" data-k="'+k+'"><b>'+T[k].n+'</b><span>'+T[k].d+'</span></button>').join('')+(l?'<button class="ch wide" data-o="'+l.id+'"><b>Take me to my last document</b><span>'+E(l.title||'Untitled')+', '+T[l.t].n+', '+ago(l.u)+'</span></button>':'');
+ $('#mp').classList.add('on')}
+function docs(){
+ const a=Object.values(DB).sort((x,y)=>y.u-x.u);
+ $('#dl').innerHTML=a.length?a.map(d=>'<div class="row"><button class="o" data-o="'+d.id+'">'+E(d.title||'Untitled')+'<small>'+T[d.t].n+', '+ago(d.u)+'</small></button><button class="d" data-x="'+d.id+'" aria-label="Delete">×</button></div>').join(''):'<p class="em">No documents yet. Tap New to start one.</p>';
+ $('#vr').textContent='AfroPublisher '+VER+'. Works offline.';
+ $('#md').classList.add('on')}
+
+$('#pk').onclick=e=>{const b=e.target.closest('button');if(!b)return;b.dataset.k?neu(b.dataset.k):open_(b.dataset.o)};
+$('#dl').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.o)open_(b.dataset.o);
+ else if(b.dataset.x&&confirm('Delete this document from this device?')){delete DB[b.dataset.x];if(D&&D.id===b.dataset.x)D=null;try{localStorage.setItem('ap.db',JSON.stringify(DB))}catch(x){}D?docs():(closeAll(),picker())}};
+document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{closeAll();if(!D)neu('book')});
+$('#bn').onclick=picker;$('#bd').onclick=docs;$('#be').onclick=()=>$('#mx').classList.add('on');
+$('#xp').onclick=()=>printDoc(0);$('#xb').onclick=()=>printDoc(1);$('#xe').onclick=epub;
+$('#tw').onclick=()=>view('w');$('#tv').onclick=()=>view('p');$('#tl').onclick=()=>{$('#lp').hidden=!$('#lp').hidden};
+$('#ti').oninput=e=>{D.title=e.target.value;touch()};
+$('#au').oninput=e=>{D.author=e.target.value;touch()};
+$('#tx').oninput=e=>{D.text=e.target.value;touch();grow()};
+$('#z').onchange=e=>{D.z=e.target.value;touch()};
+$('#fs').onchange=e=>{D.fs=+e.target.value;touch()};
+$('#bt').onclick=()=>{const r=document.documentElement;r.classList.toggle('lt');localStorage.setItem('ap.lt',r.classList.contains('lt')?'1':'0')};
+addEventListener('resize',()=>D&&grow());
+
+neu('book');picker();
+setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},1100);
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>
