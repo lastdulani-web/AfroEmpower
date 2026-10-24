@@ -1,4 +1,4 @@
-const V='afropublisher-v2.1';
+const V='afropublisher-v2.2';
 const A=['./','index.html','manifest.json','logo.png','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>clients.claim()))});

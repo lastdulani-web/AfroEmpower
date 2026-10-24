@@ -11,7 +11,13 @@
 <meta name="mobile-web-app-capable" content="yes">
 <style id="pg"></style>
 <style>
-:root{--bl:#0450af;--dk:#04264f;--li:#d4ff3f;--bg:#f4f6ef;--ink:#0b1b33;--mu:#5b6b84;--bd:#d5dccb}
+:root{--bl:#0450af;--dk:#04264f;--li:#d4ff3f;--bg:#f4f6ef;--ink:#0b1b33;--mu:#5b6b84;--bd:#d5dccb;--cd:#fff;--pv:#dfe5d3}
+:root.dk{--bg:#0b1424;--ink:#e8eefb;--mu:#9fb0cc;--bd:#243553;--cd:#13223a;--pv:#0e1a2e}
+.dk .hint{color:#0b1b33}
+.dk .btn.gh{color:#bcd7ff}
+.dk .ey{color:var(--li)}
+.tg{margin-left:auto;width:38px;height:38px;border:1.5px solid #ffffff55;background:#ffffff14;border-radius:10px;color:#fff;display:grid;place-items:center;padding:0}
+.tg svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:var(--bg);color:var(--ink);font:16px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;height:100dvh}
@@ -30,33 +36,33 @@ main{flex:1;overflow:auto;padding:18px 18px 28px}
 .ey{margin:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bl)}
 h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tile{background:#fff;border:1.5px solid var(--bd);border-radius:16px;padding:14px;text-align:left;min-height:116px}
+.tile{background:var(--cd);border:1.5px solid var(--bd);border-radius:16px;padding:14px;text-align:left;min-height:116px}
 .tile b{display:block;font-size:18px;margin-bottom:4px}
 .tile span{color:var(--mu);font-size:13.5px;display:block}
 .tile.on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
-#ti,#au{display:block;width:100%;background:#fff;border:1.5px solid var(--bd);border-radius:12px;padding:11px 13px;margin-bottom:10px}
+#ti,#au{display:block;width:100%;background:var(--cd);border:1.5px solid var(--bd);border-radius:12px;padding:11px 13px;margin-bottom:10px}
 #ti{font-weight:700;font-size:18px}
-#tx{display:block;width:100%;min-height:42vh;background:#fff;border:1.5px solid var(--bd);border-radius:12px;padding:13px;font:17px/1.6 Georgia,serif;resize:none}
+#tx{display:block;width:100%;min-height:42vh;background:var(--cd);border:1.5px solid var(--bd);border-radius:12px;padding:13px;font:17px/1.6 Georgia,serif;resize:none}
 .hint{background:#eef9b8;border-radius:12px;padding:10px 13px;font-size:14px;margin:12px 0;white-space:pre-line}
 .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 #wc{margin-left:auto;color:var(--mu);font-size:13px}
 .btn{background:var(--bl);color:#fff;border:0;border-radius:12px;padding:13px 18px;font-weight:700}
-.btn.gh{background:#fff;color:var(--bl);border:1.5px solid var(--bd)}
+.btn.gh{background:var(--cd);color:var(--bl);border:1.5px solid var(--bd)}
 .btn.lime{background:var(--li);color:var(--dk)}
 .btn.sm{padding:9px 14px;font-size:14px}
-.nav{display:flex;gap:10px;padding:10px 16px max(10px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--bd)}
+.nav{display:flex;gap:10px;padding:10px 16px max(10px,env(safe-area-inset-bottom));background:var(--cd);border-top:1px solid var(--bd)}
 .nav #nx{flex:1}
 .tps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
-.tps button{background:#fff;border:1.5px solid var(--bd);border-radius:14px;padding:10px;text-align:left}
+.tps button{background:var(--cd);border:1.5px solid var(--bd);border-radius:14px;padding:10px;text-align:left}
 .tps b{display:block;font-size:15px}
 .tps span{font-size:12px;color:var(--mu);display:block;margin-top:2px}
 .tps .on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
 .opt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .opt label{font-size:13px;color:var(--mu);display:grid;gap:4px}
-.opt select{background:#fff;border:1.5px solid var(--bd);border-radius:10px;padding:9px;color:var(--ink)}
+.opt select{background:var(--cd);border:1.5px solid var(--bd);border-radius:10px;padding:9px;color:var(--ink)}
 .exp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .note{font-size:13px;color:var(--mu);margin:8px 0 14px}
-.pvw{background:#dfe5d3;border-radius:14px;padding:12px}
+.pvw{background:var(--pv);border-radius:14px;padding:12px}
 .em{color:var(--mu);text-align:center;padding:30px 0;margin:0}
 #to{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:8;display:none;max-width:90%;text-align:center}
 #sp{position:fixed;inset:0;background:var(--bl);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;transition:opacity .5s}
@@ -148,7 +154,7 @@ body{display:block}
 </head>
 <body>
 <div id="sp"><img src="logo.png" alt=""><b>Afro<i>Publisher</i></b><span>Developed by Last Dulani</span></div>
-<header><img src="logo.png" alt="AfroPublisher logo"><div><b>Afro<i>Publisher</i></b><small>Developed by Last Dulani</small></div></header>
+<header><img src="logo.png" alt="AfroPublisher logo"><div><b>Afro<i>Publisher</i></b><small>Developed by Last Dulani</small></div><button class="tg" id="tg" aria-label="Switch between light and dark mode"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></button></header>
 <nav class="steps"><button id="k1">1 Type</button><button id="k2">2 Text</button><button id="k3">3 Layout</button></nav>
 <main>
 <section id="s1"><p class="ey">Step 1</p><h2>What are you publishing?</h2><div class="tiles" id="tl"></div></section>
@@ -317,6 +323,10 @@ $('#nx').onclick=()=>go(step+1);$('#bk').onclick=()=>go(step-1);
 [1,2,3].forEach(i=>$('#k'+i).onclick=()=>go(i));
 $('#xp').onclick=()=>printDoc(0);$('#xb').onclick=()=>printDoc(1);$('#xe').onclick=epub;
 addEventListener('resize',()=>step===2&&grow());
+let th='';try{th=localStorage.getItem('ap2t')||''}catch(e){}
+if(!th)th=matchMedia('(prefers-color-scheme: dark)').matches?'d':'l';
+const setTh=()=>{document.documentElement.classList.toggle('dk',th==='d');try{localStorage.setItem('ap2t',th)}catch(e){}};
+setTh();$('#tg').onclick=()=>{th=th==='d'?'l':'d';setTh()};
 fill();go(W.text.trim()?2:1);
 setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},1300);
 if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
