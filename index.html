@@ -6,95 +6,136 @@
 <title>AfroPublisher</title>
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="theme-color" content="#2d2b6b">
+<meta name="theme-color" content="#0450af">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <style id="pg"></style>
 <style>
-:root{--bg:#1a1b2e;--pn:#12131f;--bd:#2c2e4d;--tx:#ecebf8;--mu:#9d9eba;--pk:#d93a73;--pk2:#ff8fb8;--hd:#2d2b6b;--hd2:#201f55}
-:root.lt{--bg:#f5f4fb;--pn:#fff;--bd:#d9d8ea;--tx:#1d1c36;--mu:#6a6a86;--pk2:#d93a73}
+:root{--bl:#0450af;--dk:#04264f;--li:#d4ff3f;--bg:#f4f6ef;--ink:#0b1b33;--mu:#5b6b84;--bd:#d5dccb}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--tx);font:16px/1.4 -apple-system,system-ui,"Segoe UI",sans-serif;display:flex;flex-direction:column;height:100dvh}
+body{background:var(--bg);color:var(--ink);font:16px/1.45 "Avenir Next","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column;height:100dvh}
 button,select,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
-:focus-visible{outline:2px solid var(--pk2);outline-offset:2px}
-header{background:linear-gradient(var(--hd),var(--hd2));padding:max(10px,env(safe-area-inset-top)) 12px 10px;display:flex;align-items:center;gap:6px;color:#fff}
-.lg{width:46px;height:46px;border-radius:13px;background:#fcfcff;display:grid;place-items:center;flex:none}
-.lg img{width:34px;height:36px;object-fit:contain}
-.nm{flex:1;min-width:0;margin-left:2px}
-.nm b{font-size:20px;display:block;line-height:1.15;white-space:nowrap}
-.nm b i{font-style:normal;color:var(--pk2)}
-.nm small{font-size:10.5px;opacity:.8;white-space:nowrap;display:block}
-.ib,.nb{height:36px;border:1.5px solid #5d5b9c;background:#ffffff14;border-radius:10px;color:#fff}
-.ib{width:36px;display:grid;place-items:center;padding:0}
-.nb{padding:0 11px}
-svg.i{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.bar{display:flex;gap:4px;padding:6px 12px;border-bottom:1px solid var(--bd);background:var(--pn)}
-.bar button{background:none;border:1px solid transparent;border-radius:999px;padding:7px 16px;color:var(--mu)}
-.bar button.on{color:var(--tx);border-color:var(--pk);background:var(--bg)}
-.bar #tl{margin-left:auto;border-color:var(--bd)}
-#lp:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 16px;background:var(--pn);border-bottom:1px solid var(--bd)}
-#lp label{font-size:13px;color:var(--mu);display:grid;gap:4px}
-#lp select{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:9px}
-main{flex:1;overflow:auto;padding:16px 20px 28px}
-#ti{width:100%;background:none;border:0;border-bottom:3px solid var(--pk);font:700 30px Georgia,serif;padding:4px 0 8px;outline:0;color:var(--tx)}
-#au{width:100%;background:none;border:0;border-bottom:1px solid var(--bd);font:italic 17px Georgia,serif;padding:10px 0;outline:0;color:var(--mu)}
-#tx{display:block;width:100%;min-height:50vh;background:none;border:0;resize:none;outline:0;font:19px/1.7 Georgia,"Iowan Old Style",serif;padding:16px 0;overflow:hidden}
-#ti::placeholder,#au::placeholder,#tx::placeholder{color:var(--mu);opacity:.7}
-.st{display:flex;justify-content:center;align-items:center;gap:12px;padding:10px 12px max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--bd);background:var(--pn);color:var(--mu);font-size:14px}
-.pill{border:1px solid var(--bd);border-radius:999px;padding:5px 14px}
-.dot{width:9px;height:9px;border-radius:50%;background:#1f9d5c;margin-right:-6px}
-.md{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:5}
-.md.on{display:flex}
-.card{background:var(--pn);border:1px solid var(--bd);border-radius:24px;padding:20px;width:100%;max-width:520px;max-height:92dvh;overflow:auto}
-.card h2{margin:0;font-size:25px}
-.hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.x{background:none;border:0;font-size:30px;line-height:1;color:var(--tx);padding:0 6px}
-.gr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.ch{background:var(--bg);border:1px solid var(--bd);border-top:4px solid var(--pk);border-radius:20px;padding:14px;text-align:left;display:block;width:100%}
-.ch b{font-size:18px;display:block;margin-bottom:6px}
-.ch span{color:var(--mu);font-size:14px;display:block}
-.wide{grid-column:1/-1}
-.row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.row button.o{flex:1;text-align:left;background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:12px}
-.row button.o small{display:block;color:var(--mu)}
-.row .d{background:none;border:0;color:var(--mu);font-size:22px;padding:6px 10px}
-.ver{color:var(--mu);font-size:13px;margin:14px 0 0;text-align:center}
-.em{color:var(--mu);text-align:center;padding:40px 0}
-#pv{display:none}
-#pv .tp{border-bottom:2px dashed #cfcfe0;padding:12% 0}
-#pv .pb .sec+.sec{border-top:2px dashed #cfcfe0;margin-top:1.5em;padding-top:1.5em}
-.paper{--ff:Georgia,"Iowan Old Style",serif;--hf:var(--ff);--ac:#d93a73;background:#fff;color:#1b1b1b;font:var(--fs,11pt)/1.6 var(--ff);padding:28px 24px;border-radius:8px;max-width:720px;margin:0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.paper[data-t=report],.paper[data-t=songbook]{--ff:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
-.paper[data-t=magazine],.paper[data-t=news]{--hf:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
-.paper h1{font:700 1.9em/1.15 var(--hf);margin:0 0 .6em}
-.paper h2{font:700 1.25em/1.2 var(--hf);margin:1.2em 0 .4em}
+:focus-visible{outline:3px solid var(--li);outline-offset:2px}
+header{background:var(--bl);color:#fff;padding:max(10px,env(safe-area-inset-top)) 16px 12px;display:flex;align-items:center;gap:12px}
+header img{width:46px;height:48px;object-fit:contain}
+header b{font-size:22px;letter-spacing:-.01em;display:block;line-height:1.1}
+header b i{font-style:normal;color:var(--li)}
+header small{font-size:11px;opacity:.85}
+.steps{display:flex;background:var(--dk);padding:0 8px}
+.steps button{flex:1;background:none;border:0;border-bottom:3px solid transparent;color:#9fb3d1;padding:11px 4px;font-weight:600;font-size:14px}
+.steps button.on{color:#fff;border-color:var(--li)}
+main{flex:1;overflow:auto;padding:18px 18px 28px}
+.ey{margin:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bl)}
+h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:#fff;border:1.5px solid var(--bd);border-radius:16px;padding:14px;text-align:left;min-height:116px}
+.tile b{display:block;font-size:18px;margin-bottom:4px}
+.tile span{color:var(--mu);font-size:13.5px;display:block}
+.tile.on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
+#ti,#au{display:block;width:100%;background:#fff;border:1.5px solid var(--bd);border-radius:12px;padding:11px 13px;margin-bottom:10px}
+#ti{font-weight:700;font-size:18px}
+#tx{display:block;width:100%;min-height:42vh;background:#fff;border:1.5px solid var(--bd);border-radius:12px;padding:13px;font:17px/1.6 Georgia,serif;resize:none}
+.hint{background:#eef9b8;border-radius:12px;padding:10px 13px;font-size:14px;margin:12px 0;white-space:pre-line}
+.acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#wc{margin-left:auto;color:var(--mu);font-size:13px}
+.btn{background:var(--bl);color:#fff;border:0;border-radius:12px;padding:13px 18px;font-weight:700}
+.btn.gh{background:#fff;color:var(--bl);border:1.5px solid var(--bd)}
+.btn.lime{background:var(--li);color:var(--dk)}
+.btn.sm{padding:9px 14px;font-size:14px}
+.nav{display:flex;gap:10px;padding:10px 16px max(10px,env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--bd)}
+.nav #nx{flex:1}
+.tps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.tps button{background:#fff;border:1.5px solid var(--bd);border-radius:14px;padding:10px;text-align:left}
+.tps b{display:block;font-size:15px}
+.tps span{font-size:12px;color:var(--mu);display:block;margin-top:2px}
+.tps .on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
+.opt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.opt label{font-size:13px;color:var(--mu);display:grid;gap:4px}
+.opt select{background:#fff;border:1.5px solid var(--bd);border-radius:10px;padding:9px;color:var(--ink)}
+.exp{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.note{font-size:13px;color:var(--mu);margin:8px 0 14px}
+.pvw{background:#dfe5d3;border-radius:14px;padding:12px}
+.em{color:var(--mu);text-align:center;padding:30px 0;margin:0}
+#to{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:8;display:none;max-width:90%;text-align:center}
+#sp{position:fixed;inset:0;background:var(--bl);z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;transition:opacity .5s}
+#sp img{width:128px;height:134px;object-fit:contain}
+#sp b{font-size:38px;letter-spacing:-.02em}
+#sp b i{font-style:normal;color:var(--li)}
+#sp span{opacity:.85}
+@media(prefers-reduced-motion:reduce){#sp{transition:none}}
+#print{display:none}
+.paper{--ff:Georgia,"Iowan Old Style",serif;--hf:var(--ff);--ac:#0450af;--a2:#d4ff3f;background:#fff;color:#161616;font:var(--fs,11pt)/1.6 var(--ff);padding:26px 22px;border-radius:6px;max-width:720px;margin:0 auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.c-report,.c-song,.c-magazine,.c-news{--hf:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.c-report,.c-song{--ff:var(--hf)}
+.paper h1{font:700 1.8em/1.15 var(--hf);margin:0 0 .6em}
+.paper h2{font:700 1.2em/1.2 var(--hf);margin:1.1em 0 .4em;color:var(--ac)}
 .paper p{margin:0 0 .8em;text-align:justify;hyphens:auto}
+.paper blockquote{margin:1em 0;padding-left:1em;border-left:4px solid var(--a2);font-style:italic;break-inside:avoid}
+.paper .by{text-align:center;color:#666;margin-top:-.4em}
 .paper .v{margin:0 0 1.1em}
-.paper .lb{font:700 .8em var(--hf);color:var(--ac);margin:.6em 0 .2em}
-.tp{text-align:center;padding:30% 0;break-after:page}
-.tp h1{font-size:2.6em}
-.tp p{text-align:center;color:#555}
-.mh{border-bottom:5px solid var(--ac);margin-bottom:1.2em;padding-bottom:.5em}
-.mh h1{font-size:2.6em;margin:0}
+.paper .lb{font:700 .75em var(--hf);color:var(--ac);text-transform:uppercase;letter-spacing:.08em;margin:.6em 0 .2em}
+.paper .ch{display:none}
+.paper .tp{text-align:center;padding:30% 0;break-after:page}
+.paper .tp h1{font-size:2.5em}
+.paper .tp p{color:#555;text-align:center}
+#pv .tp{border-bottom:2px dashed #cfd6c3;padding:12% 0}
+#pv .pb .sec+.sec{border-top:2px dashed #cfd6c3;margin-top:1.5em;padding-top:1.5em}
+.mh{border-bottom:5px solid var(--a2);margin:0 0 1.2em;padding-bottom:.6em}
+.mh h1{font-size:2.4em;margin:0;color:var(--ac)}
 .mh p{margin:.3em 0 0;color:#555;text-align:left}
-.paper[data-t=book] .sec h1,.paper[data-t=poetry] .sec h1{text-align:center;margin:1.2em 0 1em}
-.paper[data-t=magazine] .bd,.paper[data-t=news] .bd{column-count:2;column-gap:8mm}
-.paper[data-t=magazine] .sec>p:first-of-type::first-letter{float:left;font:700 3.4em/.85 var(--hf);color:var(--ac);padding:.05em .1em 0 0}
-.paper .sec h1,.paper .sec h2{break-after:avoid}
 .paper table{width:100%;border-collapse:collapse;margin:.5em 0 1em}
 .paper th,.paper td{border-bottom:1px solid #ccc;padding:.35em .4em;text-align:left;font-size:.95em}
-.paper th{background:#2d2b6b;color:#fff}
+.paper th{background:var(--ac);color:#fff}
 .paper .kv{text-align:left;margin:0 0 .3em}
 .paper .kv b{display:inline-block;min-width:7em}
-#sp{position:fixed;inset:0;background:#2d2b6b;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;transition:opacity .5s}
-#sp .lg{width:120px;height:120px;border-radius:30px}
-#sp .lg img{width:86px;height:90px}
-#sp b{font-size:38px}#sp b i{font-style:normal;color:var(--pk2)}
-#sp span{opacity:.85}
-#to{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--hd);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:8;display:none;max-width:90%;text-align:center}
-#print{display:none}
+.s1 p{text-indent:1.4em;margin:0}
+.s1 h2+p,.s1 .sec h1+p{text-indent:0}
+.s1 .sec h1{text-align:center;margin:1.2em 0 1em}
+.s1 .sec h1+p::first-letter{float:left;font-size:3.2em;line-height:.85;padding:.05em .08em 0 0;color:var(--ac)}
+.s2{--ff:system-ui,-apple-system,"Segoe UI",sans-serif}
+.s2 p{text-align:left;margin-bottom:1em}
+.s2 .sec h1{border-bottom:5px solid var(--a2);padding-bottom:.3em}
+.s3 .sec h1{text-align:center;margin:1.4em 0 1em}
+.s3 .sec h1::before{content:"\2766";display:block;font-size:.6em;color:var(--ac);margin-bottom:.3em}
+.s3 .sec h1+p::first-line{font-variant:small-caps;letter-spacing:.05em}
+.p1 .sec{text-align:center}
+.p1 .sec h1{font-style:italic;font-weight:400}
+.p2 .sec h1{font-variant:small-caps;border-bottom:2px solid var(--ac);padding-bottom:.3em}
+.p2 .v{padding-left:8%}
+.p3 .sec{border:3px double var(--ac);padding:1.4em;text-align:center;margin-bottom:1em}
+.r2 .mh,.n1 .mh,.m3 .mh{background:var(--ac);border:0;padding:1em;border-radius:6px}
+.r2 .mh h1,.n1 .mh h1,.m3 .mh h1{color:var(--a2)}
+.r2 .mh p,.n1 .mh p,.m3 .mh p{color:#fff}
+.r2 tr:nth-child(even) td{background:#f1f9d4}
+.r3{--ff:Georgia,serif}
+.r3 .mh{text-align:center;border-bottom:4px double #222}
+.r3 .mh h1{color:#111}
+.r3 .mh p,.n2 .mh p{text-align:center}
+.r3 th{background:#fff;color:#111;border-bottom:2px solid #111}
+.g1 .v{font-size:1.15em}
+.g1 .lb{background:var(--a2);display:inline-block;padding:.15em .6em;border-radius:99px}
+.g2 .v{font:.9em/1.5 ui-monospace,Menlo,Consolas,monospace}
+.g2 .ch{display:block;font-weight:700;color:var(--ac);white-space:pre-wrap}
+.g3 .sec{text-align:center}
+.g3 .lb{font-style:italic;text-transform:none;letter-spacing:0}
+.g3 h1{border-bottom:2px solid var(--ac);display:inline-block;padding:0 .5em .2em}
+.m1 .bd,.n1 .bd,.n3 .bd{column-count:2;column-gap:8mm}
+.m1 .sec>p:first-of-type::first-letter{float:left;font:700 3.4em/.85 var(--hf);color:var(--ac);padding:.05em .1em 0 0}
+.m2 .mh h1{font-size:3em}
+.m2 .sec h1{font:700 2.1em/1.1 Georgia,serif}
+.m2 .sec>p:first-of-type{font-size:1.2em;color:#333}
+.m2 p,.n2 p{text-align:left}
+.m3 .bd{column-count:3;column-gap:6mm;font-size:.88em}
+.m3 .sec h1{font-size:1.2em;border-top:4px solid var(--a2);padding-top:.3em}
+.n1 .sec{break-inside:avoid;border:1.5px solid var(--ac);border-radius:8px;padding:.7em .9em;margin-bottom:.9em}
+.n1 .sec h1{font-size:1.15em}
+.n2 .mh{text-align:center}
+.n2 .sec h1{font-size:1.4em}
+.n3 .sec{break-inside:avoid;margin-bottom:.9em}
+.n3 .sec h1{background:var(--ac);color:#fff;padding:.25em .5em;font-size:1.05em}
+.paper .sec h1,.paper .sec h2{break-after:avoid}
 @media print{
 body>:not(#print){display:none!important}
 html,body{height:auto;background:#fff}
@@ -103,38 +144,34 @@ body{display:block}
 .paper{padding:0;border-radius:0;max-width:none;margin:0}
 .paper.pb .sec+.sec{break-before:page}
 }
-@media(prefers-reduced-motion:reduce){#sp{transition:none}}
 </style>
 </head>
 <body>
-<div id="sp"><div class="lg"><img src="logo.png" alt=""></div><b>Afro<i>Publisher</i></b><span>Developed by Last Dulani</span></div>
-<header>
-<div class="lg"><img src="logo.png" alt="AfroPublisher logo"></div>
-<div class="nm"><b>Afro<i>Publisher</i></b><small>Developed by Last Dulani</small></div>
-<button class="ib" id="bt" aria-label="Light or dark"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></button>
-<button class="ib" id="be" aria-label="Export"><svg class="i" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></button>
-<button class="ib" id="bd" aria-label="My documents"><svg class="i" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
-<button class="nb" id="bn">New</button>
-</header>
-<nav class="bar"><button id="tw" class="on">Write</button><button id="tv">Preview</button><button id="tl">Layout</button></nav>
-<div id="lp" hidden>
-<label>Trim size<select id="z"><option value="A5">A5 (148 × 210 mm)</option><option value="A4">A4 (210 × 297 mm)</option><option value="6x9">6 × 9 in</option><option value="Letter">US Letter</option></select></label>
+<div id="sp"><img src="logo.png" alt=""><b>Afro<i>Publisher</i></b><span>Developed by Last Dulani</span></div>
+<header><img src="logo.png" alt="AfroPublisher logo"><div><b>Afro<i>Publisher</i></b><small>Developed by Last Dulani</small></div></header>
+<nav class="steps"><button id="k1">1 Type</button><button id="k2">2 Text</button><button id="k3">3 Layout</button></nav>
+<main>
+<section id="s1"><p class="ey">Step 1</p><h2>What are you publishing?</h2><div class="tiles" id="tl"></div></section>
+<section id="s2" hidden>
+<p class="ey" id="e2"></p><h2>Paste your text</h2>
+<input id="ti" aria-label="Title"><input id="au" aria-label="Author line">
+<textarea id="tx" placeholder="Paste or type your text here" aria-label="Your text"></textarea>
+<div class="hint" id="hn"></div>
+<div class="acts"><button class="btn sm" id="ex">Insert example</button><button class="btn sm gh" id="cl">Clear text</button><span id="wc"></span></div>
+</section>
+<section id="s3" hidden>
+<p class="ey" id="e3"></p><h2>Pick a layout</h2>
+<div class="tps" id="tps"></div>
+<div class="opt">
+<label>Page size<select id="z"><option value="A5">A5 (148 × 210 mm)</option><option value="A4">A4 (210 × 297 mm)</option><option value="6x9">6 × 9 in</option><option value="Letter">US Letter</option></select></label>
 <label>Text size<select id="fs"><option>10</option><option>11</option><option>12</option><option>14</option></select></label>
 </div>
-<main>
-<div id="wr"><input id="ti" placeholder="Title" aria-label="Title"><input id="au" placeholder="Author (optional)" aria-label="Author"><textarea id="tx" aria-label="Your text"></textarea></div>
-<div id="pv"></div>
+<div class="exp"><button class="btn" id="xp">PDF</button><button class="btn" id="xe">EPUB</button><button class="btn lime" id="xb">Print-ready</button></div>
+<p class="note">PDF opens the print dialog: choose Save as PDF. Print-ready adds 3 mm bleed on every edge.</p>
+<div class="pvw" id="pv"></div>
+</section>
 </main>
-<div class="st"><span class="pill" id="tn"></span><span class="dot"></span><span id="sv">Saved</span><span id="wc">0 words</span></div>
-
-<div class="md" id="mp"><div class="card"><div class="hd"><h2>What are you publishing?</h2><button class="x" data-c aria-label="Close">×</button></div><div class="gr" id="pk"></div></div></div>
-<div class="md" id="mx"><div class="card"><div class="hd"><h2>Export</h2><button class="x" data-c aria-label="Close">×</button></div>
-<div class="gr">
-<button class="ch wide" id="xp"><b>PDF</b><span>Opens the print dialog. Choose Save as PDF.</span></button>
-<button class="ch wide" id="xe"><b>EPUB</b><span>An e-book file for any EPUB reader, with a contents list.</span></button>
-<button class="ch wide" id="xb"><b>Print-ready PDF</b><span>Trim size plus 3 mm bleed on every edge, for the printer.</span></button>
-</div></div></div>
-<div class="md" id="md"><div class="card"><div class="hd"><h2>My documents</h2><button class="x" data-c aria-label="Close">×</button></div><div id="dl"></div><p class="ver" id="vr"></p></div></div>
+<div class="nav"><button class="btn gh" id="bk">Back</button><button class="btn" id="nx">Next</button></div>
 <div id="to"></div>
 <div id="print"></div>
 
@@ -142,128 +179,146 @@ body{display:block}
 const $=s=>document.querySelector(s),
 E=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'),
 inl=s=>E(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>'),
-VER='1.0, October 2026';
-const T={
-book:{n:'Book',d:'Chapters on a classic book page, with a title page.',s:'A5',pb:1,ph:'# Chapter One\n\nStart writing here. A blank line starts a new paragraph.'},
-poetry:{n:'Poetry collection',d:'Every line break kept, one poem per page.',s:'A5',pb:1,v:1,ph:'# Poem title\n\nEvery line break stays as you type it.\nA blank line starts a new stanza.'},
-report:{n:'School report',d:'Learner details, a marks table and comments.',s:'A4',ph:'# Term 3 Report\n\nName: Tariro Moyo\nGrade: 7\n\nSubject | Mark | Comment\nMathematics | 78% | Strong progress\n\nTeacher comment goes here.'},
-magazine:{n:'Magazine',d:'Bold masthead, two columns and a drop cap.',s:'A4',ph:'# Cover story\n\nThe first letter becomes a drop cap and the text flows into two columns.'},
-songbook:{n:'Songbook',d:'Songs with Verse, Chorus and Bridge labels.',s:'A5',pb:1,v:1,ph:'# Song title\n\n[Verse 1]\nFirst line\nSecond line\n\n[Chorus]\nSing it here'},
-news:{n:'Community newsletter',d:'Masthead, headlines and short articles in columns.',s:'A4',ph:'# Headline\n\nShort articles flow in two columns. Use ## for a subheading.'}
+VER='2.0, October 2026';
+//P
+const C={
+story:{n:'Short story',d:'Stories and chapters on book pages.',s:'A5',pb:1,ti:'Story or book title',au:'Author',
+hint:'# starts a chapter title.\nA blank line starts a new paragraph.\n*italic* and **bold** work.',
+ex:'# Chapter One\n\nThe rain came early that year, and the river road was the first to go.\n\nNobody spoke of it at the market.\n\n# Chapter Two\n\nBy Friday the water had reached the old bridge.'},
+poem:{n:'Poem',d:'Structured poems, every line break kept.',s:'A5',pb:1,v:1,ti:'Collection title',au:'Poet',
+hint:'# starts a new poem.\nEvery line break stays as typed.\nA blank line starts a new stanza.',
+ex:'# Morning\n\nThe light comes slow\nover the hills,\nand the cattle wait.\n\nSomewhere a kettle\nbegins to sing.'},
+report:{n:'School report',d:'Learner details, marks table, comments.',s:'A4',ti:'Report title',au:'School name',
+hint:'Details: one per line as  Name: Tariro Moyo\nMarks: one per line as  Subject | Mark | Comment\nThe first marks row is the header.\n## makes a sub-heading. Other text becomes comments.',
+ex:'Name: Tariro Moyo\nGrade: 7\nTerm: 3\n\n## Marks\n\nSubject | Mark | Comment\nMathematics | 78% | Strong progress\nEnglish | 71% | Reads with confidence\nScience | 66% | Needs more practice\n\n## Teacher comment\n\nTariro is a pleasant, hard-working learner.'},
+song:{n:'Song',d:'Lyric sheets, chord sheets and hymn cards.',s:'A5',pb:1,v:1,ti:'Songbook title',au:'Writer or artist',
+hint:'# starts a new song.\n[Verse 1], [Chorus], [Bridge] become labels.\nStart a line with ~ for chords (shown in Chord sheet only).\nA blank line starts a new block.',
+ex:'# Walk With Me\n\n[Verse 1]\n~ G         D\nI will walk with you\n~ Em        C\nthrough the longest night\n\n[Chorus]\n~ C    G\nWalk with me'},
+magazine:{n:'Magazine',d:'Masthead, articles, pull quotes.',s:'A4',ti:'Magazine name',au:'Issue line, e.g. October 2026',
+hint:'# starts an article.\n## makes a sub-heading.\n> at the start of a block makes a pull quote.\nA blank line starts a new paragraph.',
+ex:'# Rebuilding the River Road\n\nWhen the floods took the road, the village chose to rebuild it together, one stone at a time.\n\n> We did not wait for anyone.\n\n## The first week\n\nThe work began at sunrise with forty volunteers.'},
+news:{n:'Newsletter',d:'Community notices and short articles.',s:'A4',ti:'Newsletter name',au:'Issue line, e.g. Edition 12',
+hint:'# starts a headline or notice.\n## makes a sub-heading.\n> at the start of a block makes a highlighted quote.\nA blank line starts a new paragraph.',
+ex:'# Clean-up Saturday\n\nJoin us at the community hall at 8am. Bring gloves and a friend.\n\n# New Clinic Hours\n\nThe clinic now opens at 7am on weekdays.\n\n## Contact\n\nCall the office for more details.'}
 };
-const SZ={A5:[148,210],A4:[210,297],'6x9':[152.4,228.6],Letter:[215.9,279.4]};
-let DB={},D=null,tm;
-try{DB=JSON.parse(localStorage.getItem('ap.db')||'{}')}catch(e){}
-if(localStorage.getItem('ap.lt')==='1')document.documentElement.classList.add('lt');
-
-function parse(d){
- const t=T[d.t],src=d.text.replace(/\r/g,'').replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];let c=null;
+const T=[
+{id:'s1',c:'story',n:'Book page',d:'Indented, drop cap'},{id:'s2',c:'story',n:'Modern',d:'Clean sans, airy'},{id:'s3',c:'story',n:'Chapter opener',d:'Ornament, small caps'},
+{id:'p1',c:'poem',n:'Centered',d:'Italic titles'},{id:'p2',c:'poem',n:'Classic',d:'Left, ruled titles'},{id:'p3',c:'poem',n:'Framed',d:'Double border'},
+{id:'r1',c:'report',n:'Clean table',d:'Simple and clear'},{id:'r2',c:'report',n:'Banner',d:'Colour header'},{id:'r3',c:'report',n:'Formal',d:'Serif, double rule'},
+{id:'g1',c:'song',n:'Lyric sheet',d:'Large, label chips'},{id:'g2',c:'song',n:'Chord sheet',d:'Chords above words'},{id:'g3',c:'song',n:'Hymn card',d:'Centered, compact'},
+{id:'m1',c:'magazine',n:'Cover feature',d:'2 columns, drop cap'},{id:'m2',c:'magazine',n:'Editorial',d:'Big lead paragraph'},{id:'m3',c:'magazine',n:'Grid',d:'3 columns, banner'},
+{id:'n1',c:'news',n:'Notice board',d:'Boxed articles'},{id:'n2',c:'news',n:'Simple column',d:'One easy column'},{id:'n3',c:'news',n:'Bulletin',d:'Headline bars'}
+];
+let W={c:'story',title:'',author:'',text:'',t:{},z:'A5',fs:11},step=1;
+try{Object.assign(W,JSON.parse(localStorage.getItem('ap2')||'{}'))}catch(e){}
+const cur=()=>W.t[W.c]||T.find(t=>t.c===W.c).id;
+function parse(){
+ const c=W.c,k=C[c],src=W.text.replace(/\r/g,'').replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];let q=null;
  for(const b of src.split(/\n{2,}/)){
   const bl=b.split('\n').map(x=>x.trim()).filter(Boolean);if(!bl.length)continue;
   const m=/^# (.*)/.exec(bl[0]);
-  if(m){c={t:m[1],h:''};S.push(c);continue}
-  if(!c){c={t:'',h:''};S.push(c)}
+  if(m){q={t:m[1],h:''};S.push(q);continue}
+  if(!q){q={t:'',h:''};S.push(q)}
   let h;
   if(/^## /.test(bl[0]))h='<h2>'+inl(bl[0].slice(3))+'</h2>';
-  else if(d.t==='report'&&bl.length>1&&bl.every(x=>x.includes('|')))h='<table>'+bl.map((r,i)=>'<tr>'+r.split('|').map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x.trim())+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>';
-  else if(d.t==='report'&&bl.every(x=>/^[^|:]{1,30}:\s*\S/.test(x)))h=bl.map(x=>{const i=x.indexOf(':');return '<p class="kv"><b>'+inl(x.slice(0,i))+'</b>'+inl(x.slice(i+1).trim())+'</p>'}).join('');
-  else if(t.v)h='<div class="v">'+bl.map(x=>{const l=/^\[(.+)\]$/.exec(x);return l?'<div class="lb">'+inl(l[1])+'</div>':inl(x)+'<br/>'}).join('')+'</div>';
+  else if(/^> /.test(bl[0]))h='<blockquote>'+inl(bl.map(x=>x.replace(/^> ?/,'')).join(' '))+'</blockquote>';
+  else if(c==='report'&&bl.length>1&&bl.every(x=>x.includes('|')))h='<table>'+bl.map((r,i)=>'<tr>'+r.split('|').map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x.trim())+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>';
+  else if(c==='report'&&bl.every(x=>/^[^|:]{1,30}:\s*\S/.test(x)))h=bl.map(x=>{const i=x.indexOf(':');return '<p class="kv"><b>'+inl(x.slice(0,i))+'</b>'+inl(x.slice(i+1).trim())+'</p>'}).join('');
+  else if(k.v)h='<div class="v">'+bl.map(x=>{if(/^~/.test(x))return c==='song'?'<div class="ch">'+E(x.replace(/^~ ?/,''))+'</div>':'';const l=/^\[(.+)\]$/.exec(x);return l?'<div class="lb">'+inl(l[1])+'</div>':inl(x)+'<br/>'}).join('')+'</div>';
   else h='<p>'+inl(bl.join(' '))+'</p>';
-  c.h+=h}
+  q.h+=h}
  return S}
-const sec=s=>'<section class="sec">'+(s.t?'<h1>'+inl(s.t)+'</h1>':'')+s.h+'</section>';
-function paper(d){
- const t=T[d.t],S=parse(d),au=E(d.author||''),ti=E(d.title||'Untitled'),mast=['news','magazine','report'].includes(d.t),
- dt=new Date().toLocaleDateString(undefined,{month:'long',year:'numeric'}),
- top=mast?'<header class="mh"><h1>'+ti+'</h1><p>'+[d.t==='report'?'Learner report':dt,au].filter(Boolean).join(', ')+'</p></header>':'<div class="tp"><h1>'+ti+'</h1><p>'+au+'</p></div>';
- return '<article class="paper'+(t.pb?' pb':'')+'" data-t="'+d.t+'" style="--fs:'+d.fs+'pt">'+top+'<div class="bd">'+S.map(sec).join('')+'</div></article>'}
-
+function lay(){
+ const c=W.c,S=parse(),hasH=S.some(s=>s.t),mast=['report','magazine','news'].includes(c),ti=W.title.trim(),au=W.author.trim();
+ let top='';
+ if(mast)top='<header class="mh"><h1>'+E(ti||C[c].n)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</header>';
+ else if(hasH&&ti)top='<div class="tp"><h1>'+E(ti)+'</h1><p>'+E(au)+'</p></div>';
+ else if(!hasH&&S[0]){S[0].t=ti;S[0].by=au}
+ return{top,S}}
+const sec=s=>'<section class="sec">'+(s.t?'<h1>'+inl(s.t)+'</h1>':'')+(s.by?'<p class="by">'+E(s.by)+'</p>':'')+s.h+'</section>';
+function paper(){const {top,S}=lay();return '<article class="paper c-'+W.c+' '+cur()+(C[W.c].pb?' pb':'')+'" style="--fs:'+W.fs+'pt">'+top+'<div class="bd">'+S.map(sec).join('')+'</div></article>'}
+//PP
 //Z
 function crc(b){let t=crc.t;if(!t){t=crc.t=[];for(let i=0,c;i<256;i++){c=i;for(let n=0;n<8;n++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}}let x=-1;for(const v of b)x=t[(x^v)&255]^(x>>>8);return(x^-1)>>>0}
 function zip(files){
- const E8=new TextEncoder(),P=[],C=[];let off=0;
+ const E8=new TextEncoder(),P=[],Q=[];let off=0;
  for(const f of files){
   const n=E8.encode(f.n),c=crc(f.d),l=new DataView(new ArrayBuffer(30));
   l.setUint32(0,0x04034b50,true);l.setUint16(4,20,true);l.setUint16(6,0x0800,true);l.setUint16(12,0x21,true);l.setUint32(14,c,true);l.setUint32(18,f.d.length,true);l.setUint32(22,f.d.length,true);l.setUint16(26,n.length,true);
   P.push(l.buffer,n,f.d);
   const h=new DataView(new ArrayBuffer(46));
   h.setUint32(0,0x02014b50,true);h.setUint16(4,20,true);h.setUint16(6,20,true);h.setUint16(8,0x0800,true);h.setUint16(14,0x21,true);h.setUint32(16,c,true);h.setUint32(20,f.d.length,true);h.setUint32(24,f.d.length,true);h.setUint16(28,n.length,true);h.setUint32(42,off,true);
-  C.push(h.buffer,n);off+=30+n.length+f.d.length}
- const cs=C.reduce((a,b)=>a+b.byteLength,0),e=new DataView(new ArrayBuffer(22));
+  Q.push(h.buffer,n);off+=30+n.length+f.d.length}
+ const cs=Q.reduce((a,b)=>a+b.byteLength,0),e=new DataView(new ArrayBuffer(22));
  e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
- return new Blob([...P,...C,e.buffer],{type:'application/epub+zip'})}
+ return new Blob([...P,...Q,e.buffer],{type:'application/epub+zip'})}
 //ZZ
-
+const SZ={A5:[148,210],A4:[210,297],'6x9':[152.4,228.6],Letter:[215.9,279.4]};
 function dl(b,n){const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=n;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
 function toast(m){const e=$('#to');e.textContent=m;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',3500)}
-const slug=()=>(D.title||'Untitled').replace(/[^\w-]+/g,'-').replace(/^-|-$/g,'')||'Untitled';
+const slug=()=>(W.title||C[W.c].n).replace(/[^\w-]+/g,'-').replace(/^-|-$/g,'')||'Publication';
+const save=()=>{try{localStorage.setItem('ap2',JSON.stringify(W))}catch(e){}};
 
 function epub(){
- const S=parse(D);if(!S.length)return toast('Write something first, then export.');
- const ti=D.title||'Untitled',U=s=>new TextEncoder().encode(s),
- X=s=>'<?xml version="1.0" encoding="UTF-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.w3.org/2007/ops" lang="en"><head><meta charset="utf-8"/><title>'+E(ti)+'</title><link rel="stylesheet" href="style.css"/></head><body class="'+D.t+'">'+s+'</body></html>',
- P=[{id:'t',n:ti,h:'<div class="tp"><h1>'+E(ti)+'</h1><p>'+E(D.author||'')+'</p></div>'}].concat(S.map((s,i)=>({id:'s'+i,n:s.t||'Section '+(i+1),h:sec(s)}))),
- css='body{font-family:Georgia,serif;line-height:1.6;margin:5%}body.report,body.songbook{font-family:sans-serif}h1,h2{line-height:1.2}p{margin:0 0 .8em;text-align:justify}.v{margin:0 0 1.2em}.lb{font-weight:bold;color:#d93a73;font-size:.85em}.tp{text-align:center;margin-top:30%}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #ccc;padding:.3em;text-align:left}th{background:#2d2b6b;color:#fff}.kv b{display:inline-block;min-width:7em}',
- opf='<?xml version="1.0" encoding="UTF-8"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:'+D.id+'</dc:identifier><dc:title>'+E(ti)+'</dc:title>'+(D.author?'<dc:creator>'+E(D.author)+'</dc:creator>':'')+'<dc:language>en</dc:language><meta property="dcterms:modified">'+new Date().toISOString().slice(0,19)+'Z</meta></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="style.css" media-type="text/css"/>'+P.map(p=>'<item id="'+p.id+'" href="'+p.id+'.xhtml" media-type="application/xhtml+xml"/>').join('')+'</manifest><spine>'+P.map(p=>'<itemref idref="'+p.id+'"/>').join('')+'</spine></package>',
+ if(!W.text.trim())return toast('Paste your text first.');
+ const {top,S}=lay(),ti=W.title.trim()||C[W.c].n,U=s=>new TextEncoder().encode(s),
+ X=s=>'<?xml version="1.0" encoding="UTF-8"?>\n<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.w3.org/2007/ops" lang="en"><head><meta charset="utf-8"/><title>'+E(ti)+'</title><link rel="stylesheet" href="style.css"/></head><body class="c-'+W.c+' '+cur()+'">'+s+'</body></html>',
+ P=(top?[{id:'t',n:ti,h:top}]:[]).concat(S.map((s,i)=>({id:'s'+i,n:s.t||ti,h:sec(s)}))),
+ css='body{font-family:Georgia,serif;line-height:1.6;margin:5%}body.c-report,body.c-song,body.c-news,body.c-magazine{font-family:sans-serif}h1,h2{line-height:1.2}h2{color:#0450af}p{margin:0 0 .8em;text-align:justify}.v{margin:0 0 1.2em}.lb{font-weight:bold;color:#0450af;font-size:.8em;text-transform:uppercase}.tp{text-align:center;margin-top:30%}.mh{border-bottom:4px solid #d4ff3f;margin-bottom:1em}.mh h1{color:#0450af;margin:0}blockquote{border-left:4px solid #d4ff3f;padding-left:1em;font-style:italic}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #ccc;padding:.3em;text-align:left}th{background:#0450af;color:#fff}.kv b{display:inline-block;min-width:7em}.ch{display:none}body.g2 .ch{display:block;font-family:monospace;font-weight:bold;color:#0450af;white-space:pre-wrap}body.g2 .v{font-family:monospace}body.s1 p{text-indent:1.4em;margin:0}body.s1 h1+p,body.s1 h2+p{text-indent:0}body.p1 .sec,body.p3 .sec,body.g3 .sec,body.s3 h1,body.s1 h1{text-align:center}body.p1 h1{font-style:italic;font-weight:normal}body.m2 p,body.n2 p,body.s2 p{text-align:left}',
+ opf='<?xml version="1.0" encoding="UTF-8"?><package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="id"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:identifier id="id">urn:uuid:ap-'+Date.now().toString(36)+'</dc:identifier><dc:title>'+E(ti)+'</dc:title>'+(W.author.trim()&&W.c!=='report'?'<dc:creator>'+E(W.author.trim())+'</dc:creator>':'')+'<dc:language>en</dc:language><meta property="dcterms:modified">'+new Date().toISOString().slice(0,19)+'Z</meta></metadata><manifest><item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/><item id="css" href="style.css" media-type="text/css"/>'+P.map(p=>'<item id="'+p.id+'" href="'+p.id+'.xhtml" media-type="application/xhtml+xml"/>').join('')+'</manifest><spine>'+P.map(p=>'<itemref idref="'+p.id+'"/>').join('')+'</spine></package>',
  f=[{n:'mimetype',d:U('application/epub+zip')},
  {n:'META-INF/container.xml',d:U('<?xml version="1.0"?><container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/></rootfiles></container>')},
  {n:'OEBPS/content.opf',d:U(opf)},{n:'OEBPS/style.css',d:U(css)},
  {n:'OEBPS/nav.xhtml',d:U(X('<nav epub:type="toc"><h1>Contents</h1><ol>'+P.map(p=>'<li><a href="'+p.id+'.xhtml">'+E(p.n)+'</a></li>').join('')+'</ol></nav>'))}]
  .concat(P.map(p=>({n:'OEBPS/'+p.id+'.xhtml',d:U(X(p.h))})));
- dl(zip(f),slug()+'.epub');closeAll();toast('EPUB saved to your downloads.')}
+ dl(zip(f),slug()+'.epub');toast('EPUB saved to your downloads.')}
 
 function printDoc(bleed){
- if(!D.text.trim())return toast('Write something first, then export.');
- const [w,h]=SZ[D.z],b=bleed?3:0;
+ if(!W.text.trim())return toast('Paste your text first.');
+ const [w,h]=SZ[W.z],b=bleed?3:0;
  $('#pg').textContent='@page{size:'+(w+2*b)+'mm '+(h+2*b)+'mm;margin:'+(18+b)+'mm}';
- $('#print').innerHTML=paper(D);closeAll();
+ $('#print').innerHTML=paper();
  toast('In the print dialog, choose Save as PDF.');
  setTimeout(()=>print(),400)}
 window.onafterprint=()=>{$('#print').innerHTML=''};
 
-const persist=()=>{try{localStorage.setItem('ap.db',JSON.stringify(DB));localStorage.setItem('ap.last',D.id);$('#sv').textContent='Saved'}catch(e){$('#sv').textContent='Not saved'}};
-function touch(){D.u=Date.now();DB[D.id]=D;$('#sv').textContent='Saving…';clearTimeout(tm);tm=setTimeout(persist,300);count()}
-function count(){const n=(D.text.match(/\S+/g)||[]).length;$('#wc').textContent=n+(n===1?' word':' words')}
-function grow(){const t=$('#tx');t.style.height='auto';t.style.height=Math.max(t.scrollHeight,window.innerHeight*.5)+'px'}
-function show(){
- $('#ti').value=D.title;$('#au').value=D.author;$('#tx').value=D.text;$('#tx').placeholder=T[D.t].ph;
- $('#z').value=D.z;$('#fs').value=D.fs;$('#tn').textContent=T[D.t].n;count();view('w');grow()}
-function view(v){
- $('#wr').style.display=v==='w'?'block':'none';$('#pv').style.display=v==='p'?'block':'none';
- $('#tw').classList.toggle('on',v==='w');$('#tv').classList.toggle('on',v==='p');
- if(v==='p')$('#pv').innerHTML=D.text.trim()?paper(D):'<p class="em">Nothing to preview yet. Write something first.</p>'}
-function neu(t){D={id:'d'+Date.now().toString(36),t,title:'',author:'',text:'',z:T[t].s,fs:11,u:Date.now()};closeAll();show()}
-function open_(id){D=DB[id];closeAll();show()}
-function closeAll(){document.querySelectorAll('.md').forEach(m=>m.classList.remove('on'))}
-const ago=u=>{const m=(Date.now()-u)/6e4;return m<1?'just now':m<60?Math.floor(m)+' min ago':m<1440?Math.floor(m/60)+' h ago':Math.floor(m/1440)+(m<2880?' day ago':' days ago')};
-function picker(){
- const l=DB[localStorage.getItem('ap.last')];
- $('#pk').innerHTML=Object.keys(T).map(k=>'<button class="ch" data-k="'+k+'"><b>'+T[k].n+'</b><span>'+T[k].d+'</span></button>').join('')+(l?'<button class="ch wide" data-o="'+l.id+'"><b>Take me to my last document</b><span>'+E(l.title||'Untitled')+', '+T[l.t].n+', '+ago(l.u)+'</span></button>':'');
- $('#mp').classList.add('on')}
-function docs(){
- const a=Object.values(DB).sort((x,y)=>y.u-x.u);
- $('#dl').innerHTML=a.length?a.map(d=>'<div class="row"><button class="o" data-o="'+d.id+'">'+E(d.title||'Untitled')+'<small>'+T[d.t].n+', '+ago(d.u)+'</small></button><button class="d" data-x="'+d.id+'" aria-label="Delete">×</button></div>').join(''):'<p class="em">No documents yet. Tap New to start one.</p>';
- $('#vr').textContent='AfroPublisher '+VER+'. Works offline.';
- $('#md').classList.add('on')}
+function count(){const n=(W.text.match(/\S+/g)||[]).length;$('#wc').textContent=n+(n===1?' word':' words')}
+function grow(){const t=$('#tx');t.style.height='auto';t.style.height=Math.max(t.scrollHeight,innerHeight*.42)+'px'}
+function fill(){
+ const k=C[W.c];$('#ti').placeholder=k.ti;$('#au').placeholder=k.au;$('#hn').textContent=k.hint;
+ $('#ti').value=W.title;$('#au').value=W.author;$('#tx').value=W.text;
+ $('#e2').textContent='Step 2 · '+k.n;$('#e3').textContent='Step 3 · '+k.n;count()}
+function setCat(c){W.c=c;W.z=C[c].s;W.fs=11;save();fill();go(2)}
+function render3(){
+ $('#tps').innerHTML=T.filter(t=>t.c===W.c).map(t=>'<button data-t="'+t.id+'" class="'+(t.id===cur()?'on':'')+'"><b>'+t.n+'</b><span>'+t.d+'</span></button>').join('');
+ $('#z').value=W.z;$('#fs').value=W.fs;
+ $('#pv').innerHTML=W.text.trim()?paper():'<p class="em">Nothing to preview yet. Go back and paste your text.</p>'}
+function go(n){
+ if(n===3&&!W.text.trim()){toast('Paste your text first.');n=2}
+ step=n;
+ [1,2,3].forEach(i=>{$('#s'+i).hidden=i!==n;$('#k'+i).classList.toggle('on',i===n)});
+ $('#bk').style.visibility=n===1?'hidden':'visible';$('#nx').style.display=n===3?'none':'block';
+ if(n===1)$('#tl').querySelectorAll('.tile').forEach(b=>b.classList.toggle('on',b.dataset.c===W.c));
+ if(n===2)grow();
+ if(n===3)render3();
+ $('main').scrollTop=0}
 
-$('#pk').onclick=e=>{const b=e.target.closest('button');if(!b)return;b.dataset.k?neu(b.dataset.k):open_(b.dataset.o)};
-$('#dl').onclick=e=>{const b=e.target.closest('button');if(!b)return;
- if(b.dataset.o)open_(b.dataset.o);
- else if(b.dataset.x&&confirm('Delete this document from this device?')){delete DB[b.dataset.x];if(D&&D.id===b.dataset.x)D=null;try{localStorage.setItem('ap.db',JSON.stringify(DB))}catch(x){}D?docs():(closeAll(),picker())}};
-document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{closeAll();if(!D)neu('book')});
-$('#bn').onclick=picker;$('#bd').onclick=docs;$('#be').onclick=()=>$('#mx').classList.add('on');
+$('#tl').innerHTML=Object.keys(C).map(k=>'<button class="tile" data-c="'+k+'"><b>'+C[k].n+'</b><span>'+C[k].d+'</span><span>3 templates</span></button>').join('');
+$('#tl').onclick=e=>{const b=e.target.closest('.tile');if(b)setCat(b.dataset.c)};
+$('#tps').onclick=e=>{const b=e.target.closest('button');if(b){W.t[W.c]=b.dataset.t;save();render3()}};
+$('#ti').oninput=e=>{W.title=e.target.value;save()};
+$('#au').oninput=e=>{W.author=e.target.value;save()};
+$('#tx').oninput=e=>{W.text=e.target.value;save();count();grow()};
+$('#ex').onclick=()=>{if(W.text.trim()&&!confirm('Replace your text with the example?'))return;W.text=C[W.c].ex;save();fill();grow()};
+$('#cl').onclick=()=>{if(W.text.trim()&&!confirm('Clear your text?'))return;W.text='';save();fill();grow()};
+$('#z').onchange=e=>{W.z=e.target.value;save()};
+$('#fs').onchange=e=>{W.fs=+e.target.value;save();render3()};
+$('#nx').onclick=()=>go(step+1);$('#bk').onclick=()=>go(step-1);
+[1,2,3].forEach(i=>$('#k'+i).onclick=()=>go(i));
 $('#xp').onclick=()=>printDoc(0);$('#xb').onclick=()=>printDoc(1);$('#xe').onclick=epub;
-$('#tw').onclick=()=>view('w');$('#tv').onclick=()=>view('p');$('#tl').onclick=()=>{$('#lp').hidden=!$('#lp').hidden};
-$('#ti').oninput=e=>{D.title=e.target.value;touch()};
-$('#au').oninput=e=>{D.author=e.target.value;touch()};
-$('#tx').oninput=e=>{D.text=e.target.value;touch();grow()};
-$('#z').onchange=e=>{D.z=e.target.value;touch()};
-$('#fs').onchange=e=>{D.fs=+e.target.value;touch()};
-$('#bt').onclick=()=>{const r=document.documentElement;r.classList.toggle('lt');localStorage.setItem('ap.lt',r.classList.contains('lt')?'1':'0')};
-addEventListener('resize',()=>D&&grow());
-
-neu('book');picker();
-setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},1100);
+addEventListener('resize',()=>step===2&&grow());
+fill();go(W.text.trim()?2:1);
+setTimeout(()=>{const s=$('#sp');s.style.opacity=0;setTimeout(()=>s.remove(),500)},1300);
 if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js');
 </script>
 </body>
