@@ -60,6 +60,8 @@ h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
 .opt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .opt label{font-size:13px;color:var(--mu);display:grid;gap:4px}
 .opt select{background:var(--cd);border:1.5px solid var(--bd);border-radius:10px;padding:9px;color:var(--ink)}
+.ck{display:flex;gap:8px;align-items:flex-start;margin:0 0 4px;font-size:14px}
+.ck input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--bl)}
 .exp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .note{font-size:13px;color:var(--mu);margin:8px 0 14px}
 .pvw{background:var(--pv);border-radius:14px;padding:12px}
@@ -161,6 +163,8 @@ body{display:block}
 <label>Page size<select id="z"><option value="A4">A4 (210 × 297 mm)</option><option value="Letter">US Letter</option><option value="A5">A5 (148 × 210 mm)</option></select></label>
 <label>Text size<select id="fs"><option>10</option><option>11</option><option>12</option><option>14</option></select></label>
 </div>
+<label class="ck"><input type="checkbox" id="smc" checked> Smart formatting: find headings and lists in plain text</label>
+<p class="note" id="sm"></p>
 <div class="exp"><button class="btn" id="xw">Word (.docx)</button><button class="btn" id="xp">PDF</button><button class="btn" id="xe">EPUB</button><button class="btn lime" id="xb">Print-ready PDF</button></div>
 <p class="note">Word opens for editing in Word or Google Docs. PDF opens the print dialog: choose Save as PDF. Print-ready adds 3 mm bleed on every edge.</p>
 <div class="pvw" id="pv"></div>
@@ -235,8 +239,36 @@ function tbl(bl,c,S){
      d:{t:'tb',rows:[[h[0],h[1],'Share']].concat(R.map((r,i)=>[r[0],r[1],{p:ps[i],pl:1}]))}}}
   }}
  return{h:'<table>'+R0.map((r,i)=>'<tr>'+r.map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x)+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>',d:{t:'tb',rows:R0}}}
+function prep(t){
+ prep.n=0;
+ t=t.replace(/[\u2028\u2029\u0085]/g,'\n').replace(/\u00a0/g,' ').replace(/\r\n?/g,'\n').replace(/[ \t]*\t[ \t]*/g,' | ').replace(/^[ \t]*[\u2022\u00b7\u25aa\u25cf\u25e6\u2023][ \t]*/gm,'- ').replace(/^[ \t]*[\u2013\u2014][ \t]+/gm,'- ');
+ const smart=W.sm!==false&&!/^#{1,2} /m.test(t),hasBlank=/\S[ \t]*\n[ \t]*\n\s*\S/.test(t);
+ let L=t.split('\n').map(x=>x.trim());
+ const kind=x=>!x?'':/^#{1,2} /.test(x)?'h':/^> /.test(x)?'q':x.includes('|')?'t':/^[-*] /.test(x)?'b':/^\d+[.)] /.test(x)?'n':/^[^|:]{1,30}:\s+\S/.test(x)?'k':'p';
+ if(smart){
+  const tt=(W.title||'').trim().toLowerCase(),f=L.findIndex(x=>x);
+  if(f>=0&&tt&&L[f].toLowerCase()===tt)L[f]='';
+  const nx=i=>{for(let j=i+1;j<L.length;j++)if(L[j])return L[j];return''},
+  head=i=>{
+   const x=L[i];if(!x||x.length>70)return null;
+   const k=kind(x),core=x.replace(/^\d+(\.\d+)*[.)]?\s+/,''),w=core.split(/\s+/).length,n=nx(i),kn=kind(n);
+   if(core!==x&&(k==='n'||k==='p')){
+    const seg=s=>{const m=/^\d+(\.\d+)*/.exec(s);return m?parseInt(m[0].split('.').pop()):NaN},cn=seg(x);
+    if(seg(L[i+1]||'')===cn+1||seg(L[i-1]||'')===cn-1)return null;
+    return w<=8&&!/[.,;!?]$/.test(core)?core.replace(/:$/,'').trim():null}
+   if(k!=='p'||/[.,;!?]$/.test(x))return null;
+   if(/:$/.test(x)&&w<=8)return x.slice(0,-1).trim();
+   if(x===x.toUpperCase()&&/[A-Z]{3}/.test(x)&&w<=10)return x;
+   if(w<=8&&x.length<=60&&/^[A-Z0-9]/.test(x)&&n&&(!hasBlank||!L[i-1])&&kn!=='h'&&(kn!=='p'||n.length>=x.length))return x;
+   return null},
+  out=[];
+  for(let i=0;i<L.length;i++){const s=head(i);if(s!==null){out.push('','# '+s,'');prep.n++}else out.push(L[i])}
+  L=out}
+ const res=[];let pk='';
+ for(const x of L){if(!x){res.push('');pk='';continue}const k=kind(x);if(pk&&(pk!==k||k==='h'||(k==='p'&&!hasBlank)))res.push('');res.push(x);pk=k}
+ return res.join('\n')}
 function parse(){
- const c=W.c,src=W.text.replace(/\r/g,'').replace(/[ \t]*\t[ \t]*/g,' | ').replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];S.P=[];let q=null;
+ const c=W.c,src=prep(W.text).replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];S.P=[];let q=null;
  for(const b of src.split(/\n{2,}/)){
   const bl=b.split('\n').map(x=>x.trim()).filter(Boolean);if(!bl.length)continue;
   const m=/^# (.*)/.exec(bl[0]);
@@ -374,7 +406,9 @@ function setCat(c){W.c=c;W.z='A4';W.fs=11;save();fill();go(2)}
 function render3(){
  $('#tps').innerHTML=T.filter(t=>t.c===W.c).map(t=>'<button data-t="'+t.id+'" class="'+(t.id===cur()?'on':'')+'"><b>'+t.n+'</b><span>'+t.d+'</span></button>').join('');
  $('#z').value=W.z;$('#fs').value=W.fs;
- $('#pv').innerHTML=W.text.trim()?paper():'<p class="em">Nothing to preview yet. Go back and paste your text.</p>'}
+ $('#smc').checked=W.sm!==false;
+ $('#pv').innerHTML=W.text.trim()?paper():'<p class="em">Nothing to preview yet. Go back and paste your text.</p>';
+ $('#sm').textContent=W.text.trim()&&prep.n?'Smart formatting found '+prep.n+(prep.n===1?' heading':' headings')+'. To choose your own, start a line with #.':''}
 function go(n){
  if(n===3&&!W.text.trim()){toast('Paste your text first.');n=2}
  step=n;
@@ -400,6 +434,7 @@ function insTxt(s){
  t.value=pre+g+pst;W.text=t.value;save();count();grow();toast('Table pasted. Check the preview in step 3.')}
 $('#tx').addEventListener('paste',e=>{const s=(e.clipboardData||window.clipboardData).getData('text');if(!s.includes('\t'))return;e.preventDefault();insTxt(s)});
 $('#pt').onclick=()=>{if(!navigator.clipboard||!navigator.clipboard.readText)return toast('Long-press in the text box and tap Paste.');navigator.clipboard.readText().then(s=>s.trim()?insTxt(s):toast('Nothing copied yet.')).catch(()=>toast('Long-press in the text box and tap Paste instead.'))};
+$('#smc').onchange=e=>{W.sm=e.target.checked;save();render3()};
 $('#z').onchange=e=>{W.z=e.target.value;save()};
 $('#fs').onchange=e=>{W.fs=+e.target.value;save();render3()};
 $('#nx').onclick=()=>go(step+1);$('#bk').onclick=()=>go(step-1);
