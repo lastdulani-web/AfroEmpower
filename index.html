@@ -133,6 +133,65 @@ h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
 .kg .kvs{display:grid;grid-template-columns:1fr 1fr;gap:.3em 1.2em;border:1.5px solid var(--ac);border-radius:8px;padding:.6em .9em;margin:.5em 0 1em}
 .kg .kv{margin:0}
 .kg .kv b{display:block;min-width:0;font-size:.72em;text-transform:uppercase;letter-spacing:.06em;color:var(--ac)}
+.paper .tot td{font-weight:700;border-top:2px solid var(--ac)}
+.c-minutes{--ac:#04264f;font-size:calc(var(--fs)*.95)}
+.paper.c-minutes .mh h1,.paper.c-minutes .tp h1{font:700 1.5em/1.2 var(--hf);letter-spacing:.05em;text-transform:uppercase}
+.c-minutes:not(.hb) .sec h1{font:700 .8em/1.2 ui-monospace,Menlo,Consolas,monospace;text-transform:uppercase;letter-spacing:.12em;color:#04264f;border:0;border-left:6px solid var(--a2);padding:.35em .7em;background:#eef1f6;margin:1.1em 0 .5em}
+.c-minutes.nm .sec h1::before{content:counter(s,decimal-leading-zero) "  "}
+.c-minutes ul{list-style:none;padding-left:0}
+.c-minutes li{position:relative;padding-left:1.6em}
+.c-minutes li::before{content:"\2713";position:absolute;left:0;color:#1f9d5c;font-weight:700}
+.c-proposal{--hf:Georgia,"Iowan Old Style",serif}
+.c-proposal .sec h1{font:400 1.7em/1.2 var(--hf);margin-top:1.6em}
+.c-proposal:not(.hb) .sec h1{border:0;padding:0}
+.c-proposal:not(.hb) .sec h1::after{content:"";display:block;width:3em;height:5px;background:var(--a2);margin-top:.35em}
+.c-proposal blockquote{border:0;background:none;text-align:center;font:italic 1.3em/1.4 Georgia,serif;color:var(--ac);padding:.4em 1.2em}
+.c-proposal th{background:#fff;color:var(--ac);border-bottom:3px solid var(--ac);text-transform:uppercase;font-size:.75em;letter-spacing:.08em}
+.c-proposal .tp{padding-top:30%}
+.paper.c-proposal .tp h1{font:400 3em/1.1 Georgia,serif}
+.c-proposal .tp::before{content:"";display:block;width:4em;height:8px;background:var(--a2);margin-bottom:1em}
+.c-profile .sec h1{text-transform:uppercase;letter-spacing:.08em;font-size:1.1em}
+.c-profile:not(.c2) .bd>.sec:first-child>.kvs:first-child{float:right;width:38%;margin:0 0 1em 1.2em;background:var(--ac);color:#fff;border:0;border-radius:10px;padding:.9em 1em;display:block}
+.c-profile:not(.c2) .bd>.sec:first-child>.kvs:first-child .kv{margin:0 0 .5em}
+.c-profile:not(.c2) .bd>.sec:first-child>.kvs:first-child .kv b{color:var(--a2)}
+.c-profile ul{list-style:none;padding-left:0}
+.c-profile li{position:relative;padding-left:1.5em}
+.c-profile li::before{content:"\2714";position:absolute;left:0;color:var(--ac)}
+.c-funding.nm .sec h1::before{content:counter(s);display:inline-block;width:1.6em;height:1.6em;line-height:1.6em;text-align:center;border-radius:50%;background:var(--a2);color:#04264f;margin-right:.5em;font-size:.9em}
+.c-funding.ro .sec h1{border:0;padding:0}
+.c-funding ul{list-style:none;padding-left:0}
+.c-funding li::before{content:"\2192";color:var(--ac);font-weight:700;margin-right:.5em}
+.c-funding blockquote{background:var(--a2);border:0;border-radius:8px;color:#04264f;font-style:normal;font-weight:600}
+.c-research{--ac:#111;--a2:#999;--ff:Georgia,"Times New Roman",serif;--hf:var(--ff)}
+.paper.c-research .mh h1,.paper.c-research .tp h1{color:#111;font-size:2em;text-align:center}
+.c-research .mh,.c-research .tp{text-align:center;border-bottom:1px solid #111}
+.c-research .mh p,.c-research .tp p{text-align:center}
+.c-research .sec h1{font-size:1.2em;border:0;padding:0;margin-top:1.4em}
+.c-research h2{color:#111;font-style:italic}
+.c-research th{background:none;color:#111;border-top:2px solid #111;border-bottom:1px solid #111}
+.c-research blockquote{background:none;border-left:2px solid #111}
+.c-annual{--ac:#04264f}
+.c-annual .sec h1{font:700 2.1em/1.1 Georgia,serif;margin:1.3em 0 .5em;letter-spacing:-.01em}
+.c-annual.ro .sec h1{border:0;border-top:6px solid var(--ac);padding-top:.3em}
+.c-annual .sec>p:first-of-type::first-letter{float:left;font:700 3.2em/.85 Georgia,serif;color:#0450af;padding:.05em .1em 0 0}
+.c-annual ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.7em}
+.c-annual li{border-top:4px solid var(--a2);padding-top:.4em;margin:0}
+.c-annual li .big{display:block;font:700 2.2em/1 Georgia,serif;color:#0450af}
+.c-annual blockquote{background:#04264f;color:#fff;border:0;border-radius:10px;font:italic 1.3em/1.4 Georgia,serif;padding:1em 1.2em}
+.c-annual .tp{background:#04264f;padding:30% 8%;border-radius:6px}
+.paper.c-annual .tp h1{color:#d4ff3f}
+.c-annual .tp p{color:#fff}
+#pv .c-annual .tp{padding:12% 8%}
+.c-strategic{--ac:#04264f}
+.c-strategic:not(.hb) .sec h1{font:800 1.2em/1.2 var(--hf);text-transform:uppercase;letter-spacing:.06em;color:#04264f;border:0;border-bottom:4px solid #04264f;padding-bottom:.25em}
+.c-strategic.nm .sec h1::before{content:counter(s,decimal-leading-zero);background:#d4ff3f;color:#04264f;padding:.1em .45em;margin-right:.6em;border-radius:4px}
+.c-strategic h2{background:#eef1f6;border-top:4px solid var(--a2);padding:.5em .7em;margin:1em 0 0;border-radius:6px 6px 0 0}
+.c-strategic h2+p{background:#eef1f6;padding:0 .7em .6em;margin:0 0 1em;border-radius:0 0 6px 6px}
+.c-strategic ul{list-style:none;padding:0}
+.c-strategic li::before{content:"\25B2";font-size:.7em;color:#e0a100;margin-right:.6em}
+.c-strategic td:first-child{font-weight:700}
+.c-strategic .tp{border-left:14px solid #d4ff3f;padding-left:1em}
+.c-impact .sec h1{font-size:1.2em}
 .paper .sec h1,.paper .sec h2{break-after:avoid}
 @media print{
 body>:not(#print){display:none!important}
@@ -194,7 +253,7 @@ hint:'# starts a section (Summary, Need, Objectives, Budget...).\n- starts a bul
 ex:'# Summary\n\nCommunity Hope Trust seeks R 450,000 to run a 12-month youth skills programme in two districts.\n\n# Need and background\n\nYouth unemployment in both districts is above 60 percent and few training options exist.\n\n# Objectives\n\n- Train 300 young people in practical skills\n- Link 120 graduates to work or small business support\n\n# Budget\n\nItem | Amount\nTrainers and materials | R 210,000\nStipends | R 120,000\nOutreach | R 60,000\nManagement | R 60,000\n\n# Monitoring and evaluation\n\nWe will report quarterly on attendance, completion and job placement.\n\n# Sustainability\n\nLocal businesses will host trainees after the grant ends.'},
 research:{n:'Research proposal',d:'Questions, method, timeline and ethics.',ti:'Research title',au:'Researcher, institution and date',
 hint:'# starts a section (Background, Questions, Method...).\n1. starts a numbered list; - starts a bullet.\nTimeline: Stage | Months (first row is the header).',
-ex:'# Background\n\nCommunity health workers carry much of the primary care load, yet little is known about how they cope.\n\n# Research questions\n\n1. What pressures do community health workers report?\n2. Which supports help them most?\n\n# Methodology\n\nA mixed-methods study: a survey of 120 workers and 15 follow-up interviews.\n\n# Timeline\n\nStage | Months\nLiterature review | 1 to 3\nData collection | 4 to 8\nAnalysis and writing | 9 to 12\n\n# Ethics\n\nParticipation is voluntary and responses are anonymous.\n\n# References\n\n- To be added'},
+ex:'# Background\n\nCommunity health workers carry much of the primary care load, yet little is known about how they cope.\n\n# Research questions\n\n1. What pressures do community health workers report?\n2. Which supports help them most?\n\n# Methodology\n\nA mixed-methods study with a survey of 120 workers and 15 follow-up interviews.\n\n# Timeline\n\nStage | Months\nLiterature review | 1 to 3\nData collection | 4 to 8\nAnalysis and writing | 9 to 12\n\n# Ethics\n\nParticipation is voluntary and responses are anonymous.\n\n# References\n\n- To be added'},
 annual:{n:'Annual report',d:'Highlights, finances and thanks.',ti:'Annual report title',au:'Organisation and year',
 hint:'# starts a section.\n- starts a bullet.\n> makes a highlighted quote or headline figure.\nFinancials: Income | Amount (first row is the header).',
 ex:'# Message from the director\n\nThis was a year of steady growth, driven by our volunteers and partners.\n\n# Highlights\n\n- 480 clients supported\n- 24 workshops held\n- 6 new partners\n\n> Every number here is a person who came through our door.\n\n# Financial summary\n\nSource | Amount\nGrants | R 1,200,000\nDonations | R 340,000\nOther income | R 60,000\n\n# Thank you\n\nWe thank every donor, volunteer and partner for their support.'},
@@ -238,7 +297,7 @@ function tbl(bl,c,S){
     return{h:'<table class="tb2"><tr><th>'+inl(h[0])+'</th><th>'+inl(h[1])+'</th><th>Share</th></tr>'+R.map((r,i)=>'<tr><td>'+inl(r[0])+'</td><td>'+E(r[1])+'</td><td><div class="pr">'+bar(ps[i],1)+'<b>'+ps[i]+'%</b></div></td></tr>').join('')+'</table>',
      d:{t:'tb',rows:[[h[0],h[1],'Share']].concat(R.map((r,i)=>[r[0],r[1],{p:ps[i],pl:1}]))}}}
   }}
- return{h:'<table>'+R0.map((r,i)=>'<tr>'+r.map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x)+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>',d:{t:'tb',rows:R0}}}
+ return{h:'<table>'+R0.map((r,i)=>'<tr'+(i&&/^total/i.test(r[0])?' class="tot"':'')+'>'+r.map(x=>{const g=i?'td':'th';return '<'+g+'>'+inl(x)+'</'+g+'>'}).join('')+'</tr>').join('')+'</table>',d:{t:'tb',rows:R0}}}
 function prep(t){
  prep.n=0;
  t=t.replace(/[\u2028\u2029\u0085]/g,'\n').replace(/\u00a0/g,' ').replace(/\r\n?/g,'\n').replace(/[ \t]*\t[ \t]*/g,' | ').replace(/^[ \t]*[\u2022\u00b7\u25aa\u25cf\u25e6\u2023][ \t]*/gm,'- ').replace(/^[ \t]*[\u2013\u2014][ \t]+/gm,'- ');
@@ -277,16 +336,16 @@ function parse(){
   let h,d;
   if(/^## /.test(bl[0])){const x=bl[0].slice(3);h='<h2>'+inl(x)+'</h2>';d={t:'h2',x}}
   else if(/^> /.test(bl[0])){const x=bl.map(y=>y.replace(/^> ?/,'')).join(' ');h='<blockquote>'+inl(x)+'</blockquote>';d={t:'q',x}}
-  else if(bl.every(x=>/^[-*] /.test(x))){const x=bl.map(y=>y.slice(2));h='<ul>'+x.map(y=>'<li>'+inl(y)+'</li>').join('')+'</ul>';d={t:'ul',x}}
+  else if(bl.every(x=>/^[-*] /.test(x))){const x=bl.map(y=>y.slice(2));h='<ul>'+x.map(y=>{const m=c==='annual'&&/^([R$\u20ac\u00a3]?\s?\d[\d,.]*\s?[%kKmM]?)\s+(.+)$/.exec(y);return '<li>'+(m?'<span class="big">'+E(m[1])+'</span>'+inl(m[2]):inl(y))+'</li>'}).join('')+'</ul>';d={t:'ul',x}}
   else if(bl.every(x=>/^\d+[.)] /.test(x))){const x=bl.map(y=>y.replace(/^\d+[.)] /,''));h='<ol>'+x.map(y=>'<li>'+inl(y)+'</li>').join('')+'</ol>';d={t:'ol',x}}
   else if(bl.every(x=>x.includes('|'))&&(bl.length>1||c==='impact')){const r=tbl(bl,c,S);h=r.h;d=r.d}
-  else if(bl.every(x=>/^[^|:]{1,30}:\s+\S/.test(x))){const x=bl.map(y=>{const i=y.indexOf(':');return[y.slice(0,i),y.slice(i+1).trim()]});h='<div class="kvs">'+x.map(y=>'<p class="kv"><b>'+inl(y[0])+'</b>'+inl(y[1])+'</p>').join('')+'</div>';d={t:'kv',x}}
+  else if(bl.every(x=>/^[^|:]{1,30}:\s+\S/.test(x))&&(bl.length>1||/^\S+(\s\S+)?:/.test(bl[0])&&bl[0].length<60)){const x=bl.map(y=>{const i=y.indexOf(':');return[y.slice(0,i),y.slice(i+1).trim()]});h='<div class="kvs">'+x.map(y=>'<p class="kv"><b>'+inl(y[0])+'</b>'+inl(y[1])+'</p>').join('')+'</div>';d={t:'kv',x}}
   else{const x=bl.join(' ');h='<p>'+inl(x)+'</p>';d={t:'p',x}}
   q.h+=h;q.d.push(d)}
  return S}
 function lay(){
  const S=parse(),t=T.find(x=>x.id===cur()),ti=W.title.trim()||C[W.c].n,au=W.author.trim();
- let top=t.cv?'<div class="tp"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</div>':'<header class="mh"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</header>';
+ let top=t.cv?'<div class="tp"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</div>':'<div class="mh"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</div>';
  if(W.c==='impact'&&S.P.length){const a=Math.round(S.P.reduce((x,y)=>x+y,0)/S.P.length);top+='<div class="ov"><span>Overall progress against targets</span>'+bar(a)+'<b>'+a+'%</b></div>'}
  return{top,S,t}}
 const sec=s=>'<section class="sec">'+(s.t?'<h1>'+inl(s.t)+'</h1>':'')+s.h+'</section>';
@@ -311,7 +370,7 @@ function zip(files,type){
 const SZ={A5:[148,210],A4:[210,297],Letter:[215.9,279.4]},tw=mm=>Math.round(mm*56.6929);
 function buildDocx(){
  const {S,t}=lay(),K=t.k.split(' '),has=f=>K.includes(f),ti=W.title.trim()||C[W.c].n,au=W.author.trim(),
- font=has('sr')?'Georgia':'Arial',fs=W.fs*2,[pw,ph]=SZ[W.z],M=1020,AC='0450AF',LN=has('dd')?468:360,
+ font=has('sr')?'Georgia':'Arial',fs=W.fs*2,[pw,ph]=SZ[W.z],M=1020,AC=({research:'111111',minutes:'04264F',annual:'04264F',strategic:'04264F'})[W.c]||'0450AF',UP=['minutes','strategic'].includes(W.c),LN=has('dd')?468:360,
  cw=has('c2')?Math.round((tw(pw)-2*M-454)/2):tw(pw)-2*M,
  rPr=o=>'<w:rPr>'+(o.b?'<w:b/>':'')+(o.i?'<w:i/>':'')+(o.c?'<w:color w:val="'+o.c+'"/>':'')+(o.sz?'<w:sz w:val="'+o.sz+'"/>':'')+'</w:rPr>',
  run=(x,o)=>'<w:r>'+rPr(o||{})+'<w:t xml:space="preserve">'+E(x)+'</w:t></w:r>',
@@ -322,11 +381,11 @@ function buildDocx(){
  table=(rows,opt)=>{
   const nc=Math.max(...rows.map(r=>r.length)),bars=nc>=3&&rows.some(r=>r[r.length-1]&&r[r.length-1].p!==undefined),first=bars?Math.round(cw*(nc>=4?.3:.38)):nc>=3?Math.round(cw*.3):nc===2?Math.round(cw*.4):cw,lastW=Math.round(cw*.4),rest=nc>1?Math.round((cw-first-(bars?lastW:0))/(nc-1-(bars?1:0))):0,ws=Array.from({length:nc},(_,i)=>i===0?first:(bars&&i===nc-1)?lastW:rest),
   tb=opt.box?['top','left','bottom','right','insideH'].map(s=>'<w:'+s+' w:val="single" w:sz="8" w:space="0" w:color="'+(s==='insideH'?'DDE3D0':AC)+'"/>').join(''):'<w:bottom w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/>',
-  tr=rows.map((r,ri)=>{const hd=!opt.nh&&ri===0,sh=hd?(has('tl')?'EEEEEE':AC):(has('zb')&&ri%2===1?'F1F9D4':'');
+  tr=rows.map((r,ri)=>{const hd=!opt.nh&&ri===0,tot=!opt.nh&&ri>0&&/^total/i.test(String(r[0])),sh=hd?(has('tl')?'EEEEEE':AC):(has('zb')&&ri%2===1?'F1F9D4':'');
    return '<w:tr><w:trPr><w:cantSplit/>'+(hd?'<w:tblHeader/>':'')+'</w:trPr>'+ws.map((wd,ci)=>{const c=r[ci]==null?'':r[ci];let inner;
     if(c&&c.p!==undefined)inner=para(barRuns(c.p,c.pl),{af:40});
     else if(c&&c.b!==undefined)inner=para(runs(c.b,{b:1,c:AC,sz:Math.round(fs*.85)}),{af:40});
-    else inner=para(runs(String(c),{sz:Math.round(fs*.95),b:hd,c:hd&&!has('tl')?'FFFFFF':''}),{af:40});
+    else inner=para(runs(String(c),{sz:Math.round(fs*.95),b:hd||tot,c:hd&&!has('tl')?'FFFFFF':''}),{af:40});
     return '<w:tc><w:tcPr><w:tcW w:w="'+wd+'" w:type="dxa"/>'+(sh?'<w:shd w:val="clear" w:color="auto" w:fill="'+sh+'"/>':'')+'</w:tcPr>'+inner+'</w:tc>'}).join('')+'</w:tr>'}).join('');
   return '<w:tbl><w:tblPr><w:tblW w:w="'+cw+'" w:type="dxa"/><w:tblBorders>'+tb+'</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:top w:w="40" w:type="dxa"/><w:left w:w="90" w:type="dxa"/><w:bottom w:w="40" w:type="dxa"/><w:right w:w="90" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+ws.map(x=>'<w:gridCol w:w="'+x+'"/>').join('')+'</w:tblGrid>'+tr+'</w:tbl>'+para('',{af:120})},
  blk=(d,lead)=>{
@@ -350,7 +409,7 @@ function buildDocx(){
  if(W.c==='impact'&&S.P.length){const a=Math.round(S.P.reduce((x,y)=>x+y,0)/S.P.length);TB.push(para(run('Overall progress against targets  ',{b:1})+barRuns(a),{bf:120,af:200}))}
  let n=0;
  for(const s of S){
-  if(s.t){n++;BB.push(para(runs((has('nm')?n+'. ':'')+s.t,{b:1,c:has('hb')?'FFFFFF':AC,sz:Math.round(fs*1.45)}),{st:'Heading1',keep:1,bf:280,af:100,shd:has('hb')?AC:'',bdr:has('ro')?'<w:bottom w:val="single" w:sz="18" w:space="1" w:color="D4FF3F"/>':''}))}
+  if(s.t){n++;BB.push(para(runs((has('nm')?n+'. ':'')+(UP?s.t.toUpperCase():s.t),{b:1,c:has('hb')?'FFFFFF':AC,sz:Math.round(fs*1.45)}),{st:'Heading1',keep:1,bf:280,af:100,shd:has('hb')?AC:'',bdr:has('ro')?'<w:bottom w:val="single" w:sz="18" w:space="1" w:color="D4FF3F"/>':''}))}
   s.d.forEach((d,j)=>BB.push(blk(d,j===0&&has('lf'))))}
  const pg='<w:pgSz w:w="'+tw(pw)+'" w:h="'+tw(ph)+'"/><w:pgMar w:top="'+M+'" w:right="'+M+'" w:bottom="'+M+'" w:left="'+M+'" w:header="500" w:footer="500" w:gutter="0"/>',
  body=has('c2')?TB.join('')+'<w:p><w:pPr><w:sectPr>'+pg+'<w:cols w:space="708"/></w:sectPr></w:pPr></w:p>'+BB.join('')+'<w:p><w:pPr><w:sectPr><w:type w:val="continuous"/>'+pg+'<w:cols w:num="2" w:space="454"/></w:sectPr></w:pPr></w:p><w:sectPr><w:type w:val="continuous"/>'+pg+'<w:cols w:space="708"/></w:sectPr>':TB.join('')+BB.join('')+'<w:sectPr>'+pg+'</w:sectPr>',
