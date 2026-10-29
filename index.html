@@ -35,10 +35,10 @@ header small{font-size:11px;opacity:.85}
 main{flex:1;overflow:auto;padding:18px 18px 28px}
 .ey{margin:0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--bl)}
 h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .tile{background:var(--cd);border:1.5px solid var(--bd);border-radius:16px;padding:14px;text-align:left;min-height:116px}
-.tile b{display:block;font-size:17px;margin-bottom:4px;line-height:1.2}
-.tile span{color:var(--mu);font-size:13px;display:block}
+.tile>b{display:block;font-size:17px;margin-bottom:4px;line-height:1.2}
+.tile>span{color:var(--mu);font-size:13px;display:block}
 .tile.on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
 #ti,#au{display:block;width:100%;background:var(--cd);border:1.5px solid var(--bd);border-radius:12px;padding:11px 13px;margin-bottom:10px}
 #ti{font-weight:700;font-size:18px}
@@ -52,10 +52,10 @@ h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
 .btn.sm{padding:9px 14px;font-size:14px}
 .nav{display:flex;gap:10px;padding:10px 16px max(10px,env(safe-area-inset-bottom));background:var(--cd);border-top:1px solid var(--bd)}
 .nav #nx{flex:1}
-.tps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.tps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
 .tps button{background:var(--cd);border:1.5px solid var(--bd);border-radius:14px;padding:10px;text-align:left}
-.tps b{display:block;font-size:15px}
-.tps span{font-size:12px;color:var(--mu);display:block;margin-top:2px}
+.tps button>b{display:block;font-size:15px}
+.tps button>span{font-size:12px;color:var(--mu);display:block;margin-top:2px}
 .tps .on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li)}
 .opt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .opt label{font-size:13px;color:var(--mu);display:grid;gap:4px}
@@ -64,6 +64,37 @@ h2{margin:2px 0 14px;font-size:26px;letter-spacing:-.01em}
 .ck input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--bl)}
 .exp{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .note{font-size:13px;color:var(--mu);margin:8px 0 14px}
+.how{background:#eef9b8;border:2px solid #d4ff3f;border-radius:14px;margin:0 0 12px;color:#0b1b33}
+.how summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.how summary::-webkit-details-marker{display:none}
+.how summary::before{content:"?";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#04264f;color:#d4ff3f;font-size:14px;flex:none}
+.how summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:2.5px solid #04264f;border-bottom:2.5px solid #04264f;transform:rotate(45deg);transition:transform .2s;flex:none}
+.how[open] summary::after{transform:rotate(-135deg)}
+#hn{padding:0 14px 12px;font-size:14px;white-space:pre-line}
+.seg{display:flex;gap:6px;margin:0 0 10px}
+.seg button{flex:1;padding:9px;border:1.5px solid var(--bd);border-radius:10px;background:var(--cd)}
+.seg button.on{border-color:var(--bl);box-shadow:0 0 0 3px var(--li);font-weight:700}
+.two .lv{display:none}
+.two.pv .lv{display:block}
+.two.pv .ed2{display:none}
+.lvh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;color:var(--mu)}
+.exn{background:var(--li);color:var(--dk);border-radius:10px;padding:8px 12px;font-size:13.5px;font-weight:600;margin-bottom:10px}
+.th{overflow:hidden;border:1px solid var(--bd);border-radius:8px;background:#fff;position:relative;pointer-events:none;width:100%}
+.thin{position:absolute;top:0;left:0;width:640px;transform:scale(var(--k,.2));transform-origin:0 0}
+.thin .paper{max-width:none;border-radius:0}
+.th .tp{padding:9% 8%!important;break-after:auto}
+.tile .th{height:104px;margin-bottom:10px}
+.tps .th{height:132px;margin-bottom:8px}
+main>section{max-width:1100px;margin:0 auto}
+@media(min-width:900px){
+.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+.seg{display:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.two .lv,.two.pv .lv{display:block}
+.two.pv .ed2{display:block}
+.lv{position:sticky;top:0}
+.lv .pvw{max-height:calc(100dvh - 250px);overflow:auto}
+}
 .pvw{background:var(--pv);border-radius:14px;padding:12px}
 .em{color:var(--mu);text-align:center;padding:30px 0;margin:0}
 #to{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--dk);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;z-index:8;display:none;max-width:90%;text-align:center}
@@ -210,10 +241,17 @@ body{display:block}
 <section id="s1"><p class="ey">Step 1</p><h2>What are you producing?</h2><div class="tiles" id="tl"></div></section>
 <section id="s2" hidden>
 <p class="ey" id="e2"></p><h2>Paste your text</h2>
+<details class="how" id="how"><summary id="hs">How to format this</summary><div id="hn"></div></details>
+<div class="seg" id="seg"><button id="g1" class="on">Write</button><button id="g2">Preview</button></div>
+<div class="two" id="two">
+<div class="ed2">
 <input id="ti" aria-label="Title"><input id="au" aria-label="Prepared by and date">
+<div class="exn" id="exn" hidden>This is example text. Paste your own text to replace it, or tap Clear text.</div>
 <textarea id="tx" placeholder="Paste or type your text here" aria-label="Your text"></textarea>
-<div class="hint" id="hn"></div>
 <div class="acts"><button class="btn sm" id="ex">Insert example</button><button class="btn sm gh" id="pt">Paste table</button><button class="btn sm gh" id="cl">Clear text</button><span id="wc"></span></div>
+</div>
+<div class="lv"><div class="lvh"><span id="lvn"></span><button class="btn sm gh" id="lvc">Change layout</button></div><div class="pvw" id="lv"></div></div>
+</div>
 </section>
 <section id="s3" hidden>
 <p class="ey" id="e3"></p><h2>Pick a layout</h2>
@@ -274,9 +312,10 @@ const T=[
 {id:'s1',c:'strategic',n:'Standard',d:'Cover page, numbered',cv:1,k:'sf nm ro'},{id:'s2',c:'strategic',n:'Pillars',d:'Banner, boxed',k:'sf bn bx c2 hb'},{id:'s3',c:'strategic',n:'Roadmap',d:'Bars, zebra tables',k:'sf nm hb zb'},
 {id:'i1',c:'impact',n:'Dashboard',d:'Number cards and bars',k:'sf bn kp bx kg'},{id:'i2',c:'impact',n:'Table report',d:'Tables with bars',k:'sf nm ro zb kg'},{id:'i3',c:'impact',n:'Formal',d:'Cover page, serif',cv:1,k:'sr ln tl kg'}
 ];
-let W={c:'minutes',title:'',author:'',text:'',t:{},z:'A4',fs:11},step=1;
+const ORDER=['impact','funding','minutes','proposal','profile','annual','strategic','research'];
+let W={c:'impact',title:'',author:'',text:'',t:{},z:'A4',fs:11,exs:false},step=1;
 try{Object.assign(W,JSON.parse(localStorage.getItem('ae1')||'{}'))}catch(e){}
-if(!C[W.c])W.c='minutes';
+if(!C[W.c])W.c='impact';
 const cur=()=>W.t[W.c]||T.find(t=>t.c===W.c).id;
 const num=s=>parseFloat(String(s).replace(/[^\d.\-]/g,'')),
 isN=x=>/\d/.test(x)&&!isNaN(num(x)),
@@ -326,8 +365,8 @@ function prep(t){
  const res=[];let pk='';
  for(const x of L){if(!x){res.push('');pk='';continue}const k=kind(x);if(pk&&(pk!==k||k==='h'||(k==='p'&&!hasBlank)))res.push('');res.push(x);pk=k}
  return res.join('\n')}
-function parse(){
- const c=W.c,src=prep(W.text).replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];S.P=[];let q=null;
+function parse(txt,cat){
+ const c=cat||W.c,src=prep(txt==null?W.text:txt).replace(/^(#{1,2} .*)$/gm,'\n$1\n').trim(),S=[];S.P=[];let q=null;
  for(const b of src.split(/\n{2,}/)){
   const bl=b.split('\n').map(x=>x.trim()).filter(Boolean);if(!bl.length)continue;
   const m=/^# (.*)/.exec(bl[0]);
@@ -343,14 +382,16 @@ function parse(){
   else{const x=bl.join(' ');h='<p>'+inl(x)+'</p>';d={t:'p',x}}
   q.h+=h;q.d.push(d)}
  return S}
-function lay(){
- const S=parse(),t=T.find(x=>x.id===cur()),ti=W.title.trim()||C[W.c].n,au=W.author.trim();
+function lay(tid,txt,cat){
+ const c=cat||W.c,S=parse(txt,c),t=T.find(x=>x.id===(tid||cur())),ti=(txt==null?W.title.trim():'')||C[c].n,au=txt==null?W.author.trim():'';
  let top=t.cv?'<div class="tp"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</div>':'<div class="mh"><h1>'+E(ti)+'</h1>'+(au?'<p>'+E(au)+'</p>':'')+'</div>';
- if(W.c==='impact'&&S.P.length){const a=Math.round(S.P.reduce((x,y)=>x+y,0)/S.P.length);top+='<div class="ov"><span>Overall progress against targets</span>'+bar(a)+'<b>'+a+'%</b></div>'}
+ if(c==='impact'&&S.P.length){const a=Math.round(S.P.reduce((x,y)=>x+y,0)/S.P.length);top+='<div class="ov"><span>Overall progress against targets</span>'+bar(a)+'<b>'+a+'%</b></div>'}
  return{top,S,t}}
 const sec=s=>'<section class="sec">'+(s.t?'<h1>'+inl(s.t)+'</h1>':'')+s.h+'</section>';
-function paper(){const {top,S,t}=lay();return '<article class="paper c-'+W.c+' '+t.id+' '+t.k+'" style="--fs:'+W.fs+'pt">'+top+'<div class="bd">'+S.map(sec).join('')+'</div></article>'}
+function paper(tid,txt,cat){const {top,S,t}=lay(tid,txt,cat);return '<article class="paper c-'+(cat||W.c)+' '+t.id+' '+t.k+'" style="--fs:'+(txt==null?W.fs:11)+'pt">'+top+'<div class="bd">'+S.map(sec).join('')+'</div></article>'}
 //PP
+const thumb=t=>'<div class="th"><div class="thin">'+paper(t.id,C[t.c].ex,t.c)+'</div></div>';
+function fitThumbs(){document.querySelectorAll('.th').forEach(e=>{const w=e.clientWidth;if(w)e.style.setProperty('--k',w/640)})}
 //Z
 function crc(b){let t=crc.t;if(!t){t=crc.t=[];for(let i=0,c;i<256;i++){c=i;for(let n=0;n<8;n++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t.push(c>>>0)}}let x=-1;for(const v of b)x=t[(x^v)&255]^(x>>>8);return(x^-1)>>>0}
 function zip(files,type){
@@ -460,46 +501,58 @@ function grow(){const t=$('#tx');t.style.height='auto';t.style.height=Math.max(t
 function fill(){
  const k=C[W.c];$('#ti').placeholder=k.ti;$('#au').placeholder=k.au;$('#hn').textContent=k.hint+'\nTables: copy cells in Excel or Sheets, then tap Paste table. Columns convert automatically.';
  $('#ti').value=W.title;$('#au').value=W.author;$('#tx').value=W.text;
- $('#e2').textContent='Step 2 · '+k.n;$('#e3').textContent='Step 3 · '+k.n;count()}
-function setCat(c){W.c=c;W.z='A4';W.fs=11;save();fill();go(2)}
+ $('#e2').textContent='Step 2 · '+k.n;$('#e3').textContent='Step 3 · '+k.n;$('#hs').textContent='How to format: '+k.n;$('#exn').hidden=!W.exs;count();live()}
+function live(){
+ const t=T.find(x=>x.id===cur());$('#lvn').textContent='Layout: '+t.n;
+ $('#lv').innerHTML=W.text.trim()?paper():'<p class="em">Your document appears here as you type.</p>'}
+const liveD=()=>{clearTimeout(liveD.t);liveD.t=setTimeout(live,250)};
+function setCat(c){W.c=c;W.z='A4';W.fs=11;if(!W.text.trim()||W.exs){W.text=C[c].ex;W.exs=true}save();fill();go(2)}
 function render3(){
- $('#tps').innerHTML=T.filter(t=>t.c===W.c).map(t=>'<button data-t="'+t.id+'" class="'+(t.id===cur()?'on':'')+'"><b>'+t.n+'</b><span>'+t.d+'</span></button>').join('');
+ const main=W.text.trim()?paper():'<p class="em">Nothing to preview yet. Go back and paste your text.</p>',n=W.text.trim()?prep.n:0;
+ $('#tps').innerHTML=T.filter(t=>t.c===W.c).map(t=>'<button data-t="'+t.id+'" class="'+(t.id===cur()?'on':'')+'">'+thumb(t)+'<b>'+t.n+'</b><span>'+t.d+'</span></button>').join('');
  $('#z').value=W.z;$('#fs').value=W.fs;
  $('#smc').checked=W.sm!==false;
- $('#pv').innerHTML=W.text.trim()?paper():'<p class="em">Nothing to preview yet. Go back and paste your text.</p>';
- $('#sm').textContent=W.text.trim()&&prep.n?'Smart formatting found '+prep.n+(prep.n===1?' heading':' headings')+'. To choose your own, start a line with #.':''}
+ $('#pv').innerHTML=main;
+ $('#sm').textContent=n?'Smart formatting found '+n+(n===1?' heading':' headings')+'. To choose your own, start a line with #.':'';
+ fitThumbs()}
 function go(n){
  if(n===3&&!W.text.trim()){toast('Paste your text first.');n=2}
  step=n;
  [1,2,3].forEach(i=>{$('#s'+i).hidden=i!==n;$('#k'+i).classList.toggle('on',i===n)});
  $('#bk').style.visibility=n===1?'hidden':'visible';$('#nx').style.display=n===3?'none':'block';
- if(n===1)$('#tl').querySelectorAll('.tile').forEach(b=>b.classList.toggle('on',b.dataset.c===W.c));
- if(n===2)grow();
+ if(n===1){$('#tl').querySelectorAll('.tile').forEach(b=>b.classList.toggle('on',b.dataset.c===W.c));fitThumbs()}
+ if(n===2){grow();live()}
  if(n===3)render3();
  $('main').scrollTop=0}
 
-$('#tl').innerHTML=Object.keys(C).map(k=>'<button class="tile" data-c="'+k+'"><b>'+C[k].n+'</b><span>'+C[k].d+'</span></button>').join('');
+$('#tl').innerHTML=ORDER.map(k=>'<button class="tile" data-c="'+k+'">'+thumb(T.find(x=>x.c===k))+'<b>'+C[k].n+'</b><span>'+C[k].d+'</span></button>').join('');
 $('#tl').onclick=e=>{const b=e.target.closest('.tile');if(b)setCat(b.dataset.c)};
 $('#tps').onclick=e=>{const b=e.target.closest('button');if(b){W.t[W.c]=b.dataset.t;save();render3()}};
-$('#ti').oninput=e=>{W.title=e.target.value;save()};
-$('#au').oninput=e=>{W.author=e.target.value;save()};
-$('#tx').oninput=e=>{W.text=e.target.value;save();count();grow()};
-$('#ex').onclick=()=>{if(W.text.trim()&&!confirm('Replace your text with the example?'))return;W.text=C[W.c].ex;save();fill();grow()};
-$('#cl').onclick=()=>{if(W.text.trim()&&!confirm('Clear your text?'))return;W.text='';save();fill();grow()};
+$('#ti').oninput=e=>{W.title=e.target.value;save();liveD()};
+$('#au').oninput=e=>{W.author=e.target.value;save();liveD()};
+$('#tx').oninput=e=>{W.text=e.target.value;W.exs=false;$('#exn').hidden=true;save();count();grow();liveD()};
+$('#ex').onclick=()=>{if(W.text.trim()&&!confirm('Replace your text with the example?'))return;W.text=C[W.c].ex;W.exs=true;save();fill();grow()};
+$('#cl').onclick=()=>{if(W.text.trim()&&!confirm('Clear your text?'))return;W.text='';W.exs=false;save();fill();grow()};
 function insTxt(s){
+ if(W.exs){$('#tx').value='';W.exs=false;$('#exn').hidden=true}
  const r=s.replace(/\r/g,'').split('\n').map(l=>l.replace(/[ \t]*\t[ \t]*/g,' | ').replace(/[ |]+$/,'')).join('\n').trim(),
  t=$('#tx'),a=document.activeElement===t?t.selectionStart:t.value.length,b=document.activeElement===t?t.selectionEnd:a,pre=t.value.slice(0,a),pst=t.value.slice(b),
  g=(pre&&!/\n\n$/.test(pre)?(/\n$/.test(pre)?'\n':'\n\n'):'')+r+(pst&&!/^\n\n/.test(pst)?'\n\n':'');
- t.value=pre+g+pst;W.text=t.value;save();count();grow();toast('Table pasted. Check the preview in step 3.')}
-$('#tx').addEventListener('paste',e=>{const s=(e.clipboardData||window.clipboardData).getData('text');if(!s.includes('\t'))return;e.preventDefault();insTxt(s)});
+ t.value=pre+g+pst;W.text=t.value;save();count();grow();live();toast('Table pasted. Check the preview in step 3.')}
+$('#tx').addEventListener('paste',e=>{const s=(e.clipboardData||window.clipboardData).getData('text');if(!s.includes('\t')){if(W.exs){e.target.value='';W.text='';W.exs=false;$('#exn').hidden=true}return}e.preventDefault();insTxt(s)});
 $('#pt').onclick=()=>{if(!navigator.clipboard||!navigator.clipboard.readText)return toast('Long-press in the text box and tap Paste.');navigator.clipboard.readText().then(s=>s.trim()?insTxt(s):toast('Nothing copied yet.')).catch(()=>toast('Long-press in the text box and tap Paste instead.'))};
 $('#smc').onchange=e=>{W.sm=e.target.checked;save();render3()};
 $('#z').onchange=e=>{W.z=e.target.value;save()};
+$('#g1').onclick=()=>{$('#two').classList.remove('pv');$('#g1').classList.add('on');$('#g2').classList.remove('on');grow()};
+$('#g2').onclick=()=>{live();$('#two').classList.add('pv');$('#g2').classList.add('on');$('#g1').classList.remove('on');$('main').scrollTop=0};
+$('#lvc').onclick=()=>go(3);
+const how=$('#how');try{how.open=localStorage.getItem('ae1h')!=='0'}catch(e){}
+how.addEventListener('toggle',()=>{try{localStorage.setItem('ae1h',how.open?'1':'0')}catch(e){}});
 $('#fs').onchange=e=>{W.fs=+e.target.value;save();render3()};
 $('#nx').onclick=()=>go(step+1);$('#bk').onclick=()=>go(step-1);
 [1,2,3].forEach(i=>$('#k'+i).onclick=()=>go(i));
 $('#xw').onclick=docx;$('#xp').onclick=()=>printDoc(0);$('#xb').onclick=()=>printDoc(1);$('#xe').onclick=epub;
-addEventListener('resize',()=>step===2&&grow());
+addEventListener('resize',()=>{step===2&&grow();fitThumbs()});
 let th='';try{th=localStorage.getItem('ae1t')||''}catch(e){}
 if(!th)th=matchMedia('(prefers-color-scheme: dark)').matches?'d':'l';
 const setTh=()=>{document.documentElement.classList.toggle('dk',th==='d');try{localStorage.setItem('ae1t',th)}catch(e){}};
