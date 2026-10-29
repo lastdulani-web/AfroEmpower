@@ -517,11 +517,11 @@ function render3(){
  fitThumbs()}
 function go(n){
  if(n===3&&!W.text.trim()){toast('Paste your text first.');n=2}
- step=n;
+ const was=step;step=n;
  [1,2,3].forEach(i=>{$('#s'+i).hidden=i!==n;$('#k'+i).classList.toggle('on',i===n)});
  $('#bk').style.visibility=n===1?'hidden':'visible';$('#nx').style.display=n===3?'none':'block';
  if(n===1){$('#tl').querySelectorAll('.tile').forEach(b=>b.classList.toggle('on',b.dataset.c===W.c));fitThumbs()}
- if(n===2){grow();live()}
+ if(n===2){if(was!==2)$('#how').open=false;grow();live()}
  if(n===3)render3();
  $('main').scrollTop=0}
 
@@ -546,8 +546,7 @@ $('#z').onchange=e=>{W.z=e.target.value;save()};
 $('#g1').onclick=()=>{$('#two').classList.remove('pv');$('#g1').classList.add('on');$('#g2').classList.remove('on');grow()};
 $('#g2').onclick=()=>{live();$('#two').classList.add('pv');$('#g2').classList.add('on');$('#g1').classList.remove('on');$('main').scrollTop=0};
 $('#lvc').onclick=()=>go(3);
-const how=$('#how');try{how.open=localStorage.getItem('ae1h')!=='0'}catch(e){}
-how.addEventListener('toggle',()=>{try{localStorage.setItem('ae1h',how.open?'1':'0')}catch(e){}});
+$('#how').open=false;
 $('#fs').onchange=e=>{W.fs=+e.target.value;save();render3()};
 $('#nx').onclick=()=>go(step+1);$('#bk').onclick=()=>go(step-1);
 [1,2,3].forEach(i=>$('#k'+i).onclick=()=>go(i));
